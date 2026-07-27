@@ -1,0 +1,25 @@
+product_id,product_title,product_type,variant_id,sku,variant_title,price,compare_at_price,weight_grams,cost,inventory_quantity,status,vendor
+1001,CBD Oil 10%,CBD Oils,2001,VIT-CBD10-10ML,10ml,29.99,,50,8.5,472,active,Vitalis
+1001,CBD Oil 10%,CBD Oils,2002,VIT-CBD10-30ML,30ml,69.99,,120,18.0,348,active,Vitalis
+1002,CBD Oil 20%,CBD Oils,2003,VIT-CBD20-10ML,10ml,49.99,,50,12.0,420,active,Vitalis
+1002,CBD Oil 20%,CBD Oils,2004,VIT-CBD20-30ML,30ml,109.99,137.49,120,28.0,109,active,Vitalis
+1003,CBD Gummies Mixed Berry,CBD Edibles,2005,VIT-GUM-MB-30,30 Pack,24.99,,150,6.0,348,active,Vitalis
+1003,CBD Gummies Mixed Berry,CBD Edibles,2006,VIT-GUM-MB-60,60 Pack,39.99,49.99,280,10.0,421,active,Vitalis
+1004,CBD Muscle Balm,Topicals,2007,VIT-BALM-50ML,50ml,19.99,,80,4.5,82,active,Vitalis
+1004,CBD Muscle Balm,Topicals,2008,VIT-BALM-100ML,100ml,34.99,43.74,150,8.0,63,active,Vitalis
+1005,Vitamin D3 Drops,Vitamins,2009,VIT-D3-30ML,30ml (1000IU),12.99,,60,2.8,371,active,Vitalis
+1005,Vitamin D3 Drops,Vitamins,2010,VIT-D3-30ML-4K,30ml (4000IU),16.99,21.24,60,3.5,441,active,Vitalis
+1006,Ashwagandha Capsules,Supplements,2011,VIT-ASH-60,60 Capsules,18.99,,80,3.2,358,active,Vitalis
+1006,Ashwagandha Capsules,Supplements,2012,VIT-ASH-120,120 Capsules,29.99,,140,5.5,303,active,Vitalis
+1007,Magnesium Glycinate,Supplements,2013,VIT-MAG-60,60 Capsules,14.99,,80,2.5,153,active,Vitalis
+1007,Magnesium Glycinate,Supplements,2014,VIT-MAG-120,120 Capsules,24.99,31.24,140,4.2,471,active,Vitalis
+1008,Omega-3 Fish Oil,Supplements,2015,VIT-OM3-60,60 Softgels,16.99,,100,3.8,383,active,Vitalis
+1008,Omega-3 Fish Oil,Supplements,2016,VIT-OM3-120,120 Softgels,27.99,,180,6.5,351,active,Vitalis
+1009,Sleep Support Complex,Wellness,2017,VIT-SLEEP-30,30 Capsules,22.99,,60,4.0,131,active,Vitalis
+1009,Sleep Support Complex,Wellness,2018,VIT-SLEEP-60,60 Capsules,37.99,47.49,110,7.0,438,active,Vitalis
+1010,Collagen Peptides Powder,Beauty,2019,VIT-COLL-250G,250g Unflavoured,24.99,,280,7.5,337,active,Vitalis
+1010,Collagen Peptides Powder,Beauty,2020,VIT-COLL-250G-V,250g Vanilla,26.99,,280,8.0,226,active,Vitalis
+1011,Turmeric & Black Pepper,Supplements,2021,VIT-TUR-60,60 Capsules,13.99,,70,2.2,197,active,Vitalis
+1011,Turmeric & Black Pepper,Supplements,2022,VIT-TUR-120,120 Capsules,22.99,,130,3.8,265,active,Vitalis
+1012,Zinc & Vitamin C,Vitamins,2023,VIT-ZNC-60,60 Tablets,9.99,,60,1.5,496,active,Vitalis
+1012,Zinc & Vitamin C,Vitamins,2024,VIT-ZNC-120,120 Tablets,16.99,21.24,110,2.6,128,active,Vitalis

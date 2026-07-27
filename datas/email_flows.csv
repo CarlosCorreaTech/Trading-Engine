@@ -1,0 +1,637 @@
+Run_Date,Account,Currency,Flow_ID,Flow_Name,Message_ID,Message_Name,Message_Channel,Status,Total_Recipients,Unique_Opens,Unique_Clicks,Unique_Unsubscribes,Unique_Placed_Order,Total_Placed_Order,Total_Placed_Order_Value,Tags,Message_Status,_weld_synced
+2024-07-01T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,194,108,23,0,7,7,359.09,welcome-series,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,191,95,24,0,7,7,362.15,welcome-series,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,187,98,25,1,7,8,360.27,welcome-series,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,156,86,10,0,2,2,93.87,post-purchase,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,165,100,11,1,2,2,105.2,post-purchase,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,138,85,11,0,1,1,54.24,post-purchase,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,232,84,14,1,3,3,112.1,browse-abandonment,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,125,52,13,0,6,6,258.71,cart-abandonment,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,111,46,11,0,4,4,171.52,cart-abandonment,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,205,57,9,1,1,1,35.74,win-back,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,193,51,8,1,1,1,45.42,win-back,active,2024-07-02T00:00:00
+2024-07-01T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,83,32,8,0,2,2,86.62,replenishment,active,2024-07-02T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,170,83,18,0,5,5,163.82,welcome-series,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,169,82,19,0,7,7,312.13,welcome-series,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,174,93,23,0,6,6,327.06,welcome-series,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,134,72,9,0,1,1,43.14,post-purchase,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,135,72,12,0,2,2,91.04,post-purchase,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,121,76,10,0,1,1,37.91,post-purchase,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,222,83,14,0,2,2,84.07,browse-abandonment,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,113,49,11,0,4,4,166.86,cart-abandonment,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,112,50,11,0,4,4,149.14,cart-abandonment,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,167,50,7,1,1,1,47.37,win-back,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,185,55,7,1,1,1,47.1,win-back,active,2024-07-09T00:00:00
+2024-07-08T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,97,41,7,0,2,2,84.29,replenishment,active,2024-07-09T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,143,70,16,0,4,4,170.2,welcome-series,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,140,71,17,1,5,5,258.87,welcome-series,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,164,83,18,1,5,5,258.62,welcome-series,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,145,86,11,0,2,2,70.51,post-purchase,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,134,81,10,0,1,1,45.73,post-purchase,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,136,84,10,0,1,1,48.98,post-purchase,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,231,89,13,1,3,3,123.0,browse-abandonment,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,112,54,9,0,5,5,215.31,cart-abandonment,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,122,52,10,0,4,4,174.03,cart-abandonment,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,158,43,6,1,1,1,34.76,win-back,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,178,45,6,0,1,1,41.13,win-back,active,2024-07-16T00:00:00
+2024-07-15T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,84,33,8,0,1,1,44.42,replenishment,active,2024-07-16T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,159,84,21,0,4,4,183.38,welcome-series,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,173,84,18,1,6,7,366.37,welcome-series,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,152,79,15,1,5,5,248.06,welcome-series,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,130,68,11,0,2,2,80.59,post-purchase,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,138,75,10,0,2,2,108.14,post-purchase,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,121,66,8,0,1,1,36.78,post-purchase,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,239,90,13,1,3,3,112.07,browse-abandonment,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,121,49,13,0,5,5,182.89,cart-abandonment,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,126,59,14,0,5,5,198.68,cart-abandonment,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,173,52,7,0,1,1,35.95,win-back,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,159,44,7,0,1,1,42.88,win-back,active,2024-07-23T00:00:00
+2024-07-22T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,87,38,8,0,1,1,54.54,replenishment,active,2024-07-23T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,178,100,21,0,6,6,328.71,welcome-series,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,195,100,26,1,6,6,329.18,welcome-series,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,162,86,18,0,6,7,383.17,welcome-series,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,152,79,10,0,2,2,76.61,post-purchase,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,166,93,12,0,2,2,91.26,post-purchase,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,153,87,10,0,2,2,66.64,post-purchase,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,241,84,15,1,3,3,122.62,browse-abandonment,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,120,49,12,0,5,5,195.67,cart-abandonment,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,99,44,9,0,5,5,160.47,cart-abandonment,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,204,52,7,1,1,1,43.24,win-back,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,213,54,8,1,2,2,98.34,win-back,active,2024-07-30T00:00:00
+2024-07-29T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,93,36,8,0,2,2,64.93,replenishment,active,2024-07-30T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,180,100,18,0,5,5,243.55,welcome-series,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,175,97,19,1,6,6,279.72,welcome-series,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,165,93,22,0,5,5,200.77,welcome-series,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,157,88,13,0,2,2,91.67,post-purchase,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,141,82,11,0,1,1,44.77,post-purchase,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,129,76,10,0,2,2,96.79,post-purchase,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,253,104,16,1,3,3,160.33,browse-abandonment,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,137,57,12,0,5,5,243.21,cart-abandonment,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,135,63,12,0,5,5,214.77,cart-abandonment,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,214,54,8,0,1,1,34.92,win-back,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,189,49,6,0,1,1,49.43,win-back,active,2024-08-06T00:00:00
+2024-08-05T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,82,31,6,0,2,2,69.5,replenishment,active,2024-08-06T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,163,92,17,0,5,5,185.62,welcome-series,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,189,101,20,1,7,8,339.18,welcome-series,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,154,80,17,0,6,6,250.58,welcome-series,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,137,76,12,0,2,2,65.47,post-purchase,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,123,72,9,0,1,1,52.42,post-purchase,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,155,85,12,0,2,2,103.86,post-purchase,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,256,104,13,1,3,3,156.29,browse-abandonment,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,106,44,11,0,4,4,198.27,cart-abandonment,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,121,50,10,0,4,4,154.75,cart-abandonment,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,207,55,7,1,1,1,38.63,win-back,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,208,56,8,1,1,1,40.77,win-back,active,2024-08-13T00:00:00
+2024-08-12T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,106,46,9,0,2,2,93.6,replenishment,active,2024-08-13T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,157,84,20,0,5,5,209.11,welcome-series,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,167,89,20,1,5,5,182.7,welcome-series,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,185,100,19,0,7,8,373.79,welcome-series,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,154,94,13,1,2,2,67.05,post-purchase,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,131,77,10,0,2,2,109.99,post-purchase,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,161,93,11,0,1,1,40.91,post-purchase,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,248,97,15,1,3,3,128.58,browse-abandonment,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,109,51,12,0,4,4,157.51,cart-abandonment,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,98,42,10,0,5,5,218.53,cart-abandonment,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,203,51,7,1,1,1,53.64,win-back,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,183,48,8,1,1,1,34.72,win-back,active,2024-08-20T00:00:00
+2024-08-19T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,95,38,9,0,2,2,77.44,replenishment,active,2024-08-20T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,180,102,20,1,7,7,331.51,welcome-series,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,164,91,18,0,6,6,236.18,welcome-series,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,173,86,18,0,6,6,275.84,welcome-series,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,151,96,11,0,2,2,90.66,post-purchase,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,145,86,11,0,2,2,107.6,post-purchase,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,149,86,13,1,2,2,108.95,post-purchase,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,202,83,11,1,2,2,101.35,browse-abandonment,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,104,49,9,0,5,5,231.84,cart-abandonment,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,96,42,9,0,5,5,190.62,cart-abandonment,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,163,48,7,1,1,1,39.11,win-back,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,196,52,8,1,1,1,42.56,win-back,active,2024-08-27T00:00:00
+2024-08-26T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,91,39,7,0,2,2,75.87,replenishment,active,2024-08-27T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,198,102,24,0,5,5,176.99,welcome-series,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,190,108,25,1,7,7,252.81,welcome-series,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,222,105,23,0,6,7,271.01,welcome-series,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,152,95,11,0,2,2,67.29,post-purchase,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,166,104,12,0,2,2,85.47,post-purchase,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,167,104,15,1,2,2,90.31,post-purchase,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,277,111,15,1,3,3,124.95,browse-abandonment,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,129,56,14,0,4,4,198.41,cart-abandonment,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,148,70,13,0,5,5,255.62,cart-abandonment,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,223,67,7,0,1,1,51.66,win-back,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,230,66,8,1,1,1,48.87,win-back,active,2024-09-03T00:00:00
+2024-09-02T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,117,44,11,0,2,2,100.62,replenishment,active,2024-09-03T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,196,91,22,1,7,8,311.18,welcome-series,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,192,92,22,0,7,8,430.84,welcome-series,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,176,94,22,0,6,6,258.12,welcome-series,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,139,85,12,0,2,2,98.56,post-purchase,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,140,74,10,0,2,2,95.66,post-purchase,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,167,103,11,0,2,2,79.59,post-purchase,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,262,96,13,1,2,2,97.38,browse-abandonment,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,106,45,9,0,4,4,174.8,cart-abandonment,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,102,47,8,0,4,4,210.55,cart-abandonment,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,183,49,8,0,1,1,53.06,win-back,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,204,55,9,0,1,1,33.46,win-back,active,2024-09-10T00:00:00
+2024-09-09T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,103,40,9,0,2,2,66.16,replenishment,active,2024-09-10T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,218,117,28,0,9,9,295.38,welcome-series,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,213,102,22,1,7,7,260.93,welcome-series,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,218,119,24,0,7,7,274.14,welcome-series,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,162,90,12,0,2,2,104.32,post-purchase,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,161,92,13,1,2,2,71.82,post-purchase,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,184,96,14,0,2,2,103.88,post-purchase,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,258,92,14,0,2,2,96.88,browse-abandonment,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,130,60,12,0,5,5,182.25,cart-abandonment,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,127,55,13,0,6,6,194.85,cart-abandonment,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,220,65,8,1,1,1,43.11,win-back,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,219,65,8,0,1,1,39.4,win-back,active,2024-09-17T00:00:00
+2024-09-16T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,110,50,10,0,2,2,67.55,replenishment,active,2024-09-17T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,195,93,25,1,7,7,344.14,welcome-series,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,185,93,23,1,5,5,196.65,welcome-series,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,169,80,21,1,6,6,208.94,welcome-series,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,157,89,13,1,2,2,79.99,post-purchase,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,136,80,9,0,2,2,88.25,post-purchase,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,168,99,12,0,2,2,71.37,post-purchase,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,255,90,15,1,2,2,75.93,browse-abandonment,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,108,52,11,0,4,4,217.95,cart-abandonment,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,134,61,12,0,6,7,335.74,cart-abandonment,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,209,63,8,1,1,1,46.28,win-back,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,228,63,9,0,2,2,89.89,win-back,active,2024-09-24T00:00:00
+2024-09-23T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,93,39,8,0,1,1,43.48,replenishment,active,2024-09-24T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,204,108,25,0,7,7,337.08,welcome-series,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,205,96,21,0,7,7,373.6,welcome-series,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,183,103,21,1,7,7,244.83,welcome-series,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,153,81,13,0,2,2,102.91,post-purchase,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,172,109,13,0,3,3,144.96,post-purchase,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,185,108,14,0,2,2,95.76,post-purchase,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,275,109,17,1,3,3,138.92,browse-abandonment,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,151,72,14,0,6,7,380.17,cart-abandonment,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,115,56,10,0,5,5,232.1,cart-abandonment,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,229,58,7,0,2,2,99.02,win-back,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,221,62,7,0,2,2,86.08,win-back,active,2024-10-01T00:00:00
+2024-09-30T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,117,48,11,0,3,3,145.4,replenishment,active,2024-10-01T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,179,99,20,1,5,5,185.34,welcome-series,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,196,95,25,0,5,5,228.15,welcome-series,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,184,98,21,1,6,6,228.13,welcome-series,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,150,79,13,0,1,1,33.51,post-purchase,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,162,99,14,0,2,2,70.18,post-purchase,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,143,90,12,0,2,2,107.92,post-purchase,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,285,107,18,1,3,3,125.56,browse-abandonment,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,111,46,12,0,5,5,233.0,cart-abandonment,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,122,52,10,0,6,7,292.99,cart-abandonment,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,193,59,8,0,1,1,51.94,win-back,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,207,63,7,1,1,1,41.3,win-back,active,2024-10-08T00:00:00
+2024-10-07T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,126,57,12,0,3,3,147.37,replenishment,active,2024-10-08T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,183,87,23,0,5,5,257.92,welcome-series,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,196,106,25,0,7,8,423.42,welcome-series,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,179,89,24,0,5,5,190.51,welcome-series,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,152,93,11,0,2,2,84.55,post-purchase,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,159,93,13,0,2,2,92.55,post-purchase,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,166,89,12,0,2,2,109.4,post-purchase,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,270,100,17,1,3,3,156.39,browse-abandonment,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,131,60,14,0,6,6,307.85,cart-abandonment,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,130,56,14,0,6,6,323.17,cart-abandonment,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,226,66,9,1,1,1,47.19,win-back,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,201,56,8,0,1,1,46.16,win-back,active,2024-10-15T00:00:00
+2024-10-14T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,121,46,9,0,3,3,96.34,replenishment,active,2024-10-15T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,179,99,19,0,5,5,244.76,welcome-series,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,185,96,20,0,6,6,281.01,welcome-series,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,199,111,21,1,7,8,261.73,welcome-series,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,141,87,10,0,2,2,83.45,post-purchase,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,165,95,13,0,2,2,72.8,post-purchase,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,157,88,10,1,2,2,84.93,post-purchase,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,250,97,13,0,3,3,108.2,browse-abandonment,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,115,47,12,0,5,5,192.04,cart-abandonment,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,125,58,10,0,5,5,176.45,cart-abandonment,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,191,57,6,1,1,1,33.62,win-back,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,195,49,8,0,1,1,34.82,win-back,active,2024-10-22T00:00:00
+2024-10-21T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,82,36,7,0,1,1,32.88,replenishment,active,2024-10-22T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,195,110,25,0,6,6,315.59,welcome-series,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,180,93,22,1,6,6,261.03,welcome-series,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,194,109,25,0,7,8,318.09,welcome-series,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,168,98,13,0,2,2,107.1,post-purchase,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,163,85,14,0,2,2,76.6,post-purchase,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,146,76,12,0,2,2,97.26,post-purchase,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,246,86,13,1,2,2,72.08,browse-abandonment,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,116,49,12,0,6,6,296.2,cart-abandonment,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,118,48,12,0,5,5,208.71,cart-abandonment,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,218,63,7,1,1,1,49.65,win-back,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,213,61,8,1,1,1,38.96,win-back,active,2024-10-29T00:00:00
+2024-10-28T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,90,36,7,0,2,2,98.21,replenishment,active,2024-10-29T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,165,80,17,0,6,6,324.66,welcome-series,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,170,97,21,0,5,5,190.55,welcome-series,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,164,93,20,0,5,5,185.67,welcome-series,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,135,81,12,1,2,2,78.88,post-purchase,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,169,93,12,0,2,2,65.21,post-purchase,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,145,80,10,0,2,2,80.11,post-purchase,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,234,94,12,1,2,2,76.13,browse-abandonment,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,135,62,13,0,7,8,429.65,cart-abandonment,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,133,65,14,0,5,5,203.2,cart-abandonment,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,188,51,8,0,1,1,52.71,win-back,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,218,66,7,1,1,1,39.27,win-back,active,2024-11-05T00:00:00
+2024-11-04T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,108,42,9,0,2,2,72.93,replenishment,active,2024-11-05T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,186,96,20,0,7,8,390.55,welcome-series,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,181,102,24,0,6,6,263.11,welcome-series,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,161,82,18,0,5,5,216.84,welcome-series,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,169,90,14,1,2,2,107.62,post-purchase,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,160,86,11,0,2,2,98.38,post-purchase,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,154,89,10,1,2,2,107.47,post-purchase,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,241,96,13,1,2,2,99.76,browse-abandonment,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,132,63,13,0,6,6,194.18,cart-abandonment,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,110,47,12,0,5,5,194.75,cart-abandonment,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,216,65,8,1,2,2,103.6,win-back,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,180,47,6,1,1,1,48.39,win-back,active,2024-11-12T00:00:00
+2024-11-11T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,112,48,10,0,3,3,157.38,replenishment,active,2024-11-12T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,251,122,29,1,9,10,377.92,welcome-series,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,250,134,25,1,7,8,368.37,welcome-series,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,236,112,27,0,9,10,408.53,welcome-series,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,198,114,14,0,3,3,131.65,post-purchase,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,185,109,12,1,2,2,109.79,post-purchase,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,210,125,18,0,3,3,128.3,post-purchase,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,342,118,22,0,4,4,176.18,browse-abandonment,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,181,74,16,0,6,6,310.17,cart-abandonment,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,154,74,15,0,6,6,201.2,cart-abandonment,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,264,66,11,1,1,1,42.33,win-back,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,285,85,11,1,1,1,48.17,win-back,active,2024-11-19T00:00:00
+2024-11-18T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,124,56,10,0,3,3,134.93,replenishment,active,2024-11-19T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,516,283,67,2,15,15,668.34,welcome-series,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,503,265,66,2,15,15,741.88,welcome-series,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,507,260,64,2,18,18,662.33,welcome-series,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,433,256,34,3,5,5,248.49,post-purchase,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,414,231,30,2,5,5,271.67,post-purchase,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,428,225,30,1,7,8,334.73,post-purchase,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,692,239,35,1,9,10,320.2,browse-abandonment,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,322,145,30,0,14,15,510.84,cart-abandonment,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,328,151,37,0,15,16,649.62,cart-abandonment,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,550,145,22,3,4,4,137.11,win-back,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,578,161,23,1,5,5,242.95,win-back,active,2024-11-26T00:00:00
+2024-11-25T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,300,134,27,1,8,9,352.29,replenishment,active,2024-11-26T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,365,200,48,1,14,14,535.15,welcome-series,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,332,160,34,1,12,14,455.65,welcome-series,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,370,173,38,2,14,14,758.24,welcome-series,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,279,151,19,1,3,3,121.22,post-purchase,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,278,169,21,0,4,4,134.68,post-purchase,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,307,194,25,1,4,4,160.63,post-purchase,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,487,175,29,3,4,4,188.05,browse-abandonment,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,233,109,22,1,8,8,438.76,cart-abandonment,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,249,104,24,0,12,13,462.32,cart-abandonment,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,407,107,14,1,3,3,118.48,win-back,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,397,108,13,0,3,3,114.15,win-back,active,2024-12-03T00:00:00
+2024-12-02T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,189,75,16,0,4,4,187.31,replenishment,active,2024-12-03T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,314,171,39,0,12,13,556.81,welcome-series,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,295,158,39,1,8,9,327.79,welcome-series,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,299,162,33,1,10,11,395.83,welcome-series,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,251,134,19,0,3,3,161.85,post-purchase,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,247,142,17,1,2,2,104.27,post-purchase,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,244,148,19,0,3,3,122.89,post-purchase,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,435,167,26,1,4,4,189.51,browse-abandonment,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,222,107,24,1,11,12,387.93,cart-abandonment,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,219,104,18,1,8,8,276.53,cart-abandonment,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,330,101,12,1,2,2,99.14,win-back,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,329,96,12,0,2,2,82.21,win-back,active,2024-12-10T00:00:00
+2024-12-09T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,155,63,12,0,4,4,176.31,replenishment,active,2024-12-10T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,359,173,44,1,11,12,598.64,welcome-series,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,361,198,49,2,12,13,701.25,welcome-series,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,337,179,41,1,13,14,558.95,welcome-series,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,285,173,20,0,4,4,146.66,post-purchase,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,278,152,24,0,4,4,202.85,post-purchase,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,296,159,25,1,3,3,133.64,post-purchase,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,480,189,26,1,4,4,145.17,browse-abandonment,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,232,94,25,0,9,10,392.83,cart-abandonment,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,228,102,23,1,11,11,576.3,cart-abandonment,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,407,116,15,3,3,3,142.54,win-back,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,388,100,15,0,3,3,136.66,win-back,active,2024-12-17T00:00:00
+2024-12-16T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,208,90,20,0,6,6,214.32,replenishment,active,2024-12-17T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,155,87,17,0,5,5,221.85,welcome-series,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,187,100,19,0,5,5,185.86,welcome-series,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,189,92,24,1,5,5,191.49,welcome-series,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,149,93,11,0,2,2,82.09,post-purchase,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,161,100,12,0,2,2,100.67,post-purchase,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,139,77,10,0,2,2,76.28,post-purchase,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,224,82,13,0,2,2,103.28,browse-abandonment,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,114,51,12,0,6,7,324.45,cart-abandonment,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,125,60,12,0,6,6,287.6,cart-abandonment,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,197,54,7,0,1,1,40.22,win-back,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,183,55,6,1,1,1,34.32,win-back,active,2024-12-24T00:00:00
+2024-12-23T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,95,36,8,0,2,2,76.76,replenishment,active,2024-12-24T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,141,69,15,1,4,4,151.97,welcome-series,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,131,66,16,0,5,5,261.47,welcome-series,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,141,66,18,0,4,4,179.93,welcome-series,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,124,70,11,0,1,1,48.04,post-purchase,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,103,55,8,0,1,1,40.82,post-purchase,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,97,58,6,0,1,1,38.99,post-purchase,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,159,61,10,0,1,1,39.53,browse-abandonment,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,88,42,9,0,3,3,142.85,cart-abandonment,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,82,38,9,0,4,4,137.61,cart-abandonment,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,139,40,5,0,1,1,38.04,win-back,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,160,47,5,0,1,1,54.94,win-back,active,2024-12-31T00:00:00
+2024-12-30T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,53,21,5,0,1,1,48.3,replenishment,active,2024-12-31T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,90,45,9,0,2,2,92.25,welcome-series,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,123,59,12,0,4,4,157.97,welcome-series,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,122,65,15,0,3,3,99.43,welcome-series,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,80,50,6,0,1,1,33.9,post-purchase,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,83,47,5,0,1,1,37.35,post-purchase,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,103,62,8,0,1,1,52.64,post-purchase,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,146,59,9,0,1,1,49.66,browse-abandonment,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,57,27,5,0,2,2,82.76,cart-abandonment,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,58,24,6,0,2,2,70.86,cart-abandonment,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,130,33,5,0,0,0,0.0,win-back,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,113,32,5,0,1,1,32.58,win-back,active,2025-01-07T00:00:00
+2025-01-06T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,53,20,4,0,1,1,53.6,replenishment,active,2025-01-07T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,144,73,16,0,5,5,235.02,welcome-series,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,143,77,16,0,4,4,130.18,welcome-series,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,161,86,18,1,6,7,226.51,welcome-series,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,134,78,10,0,2,2,104.31,post-purchase,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,102,57,9,0,1,1,50.94,post-purchase,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,123,69,8,0,1,1,32.92,post-purchase,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,204,80,10,1,2,2,88.42,browse-abandonment,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,109,51,9,0,5,5,161.75,cart-abandonment,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,76,32,8,0,3,3,126.92,cart-abandonment,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,160,46,5,0,1,1,50.83,win-back,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,147,44,5,0,1,1,42.23,win-back,active,2025-01-14T00:00:00
+2025-01-13T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,72,29,6,0,1,1,51.39,replenishment,active,2025-01-14T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,163,83,17,0,6,6,203.49,welcome-series,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,158,82,20,0,5,5,189.97,welcome-series,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,167,93,18,0,6,6,321.56,welcome-series,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,124,73,11,0,1,1,32.88,post-purchase,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,127,73,11,0,2,2,69.8,post-purchase,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,122,70,9,0,1,1,48.7,post-purchase,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,225,91,12,1,3,3,142.47,browse-abandonment,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,106,51,11,0,4,4,165.7,cart-abandonment,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,91,44,9,0,3,3,139.71,cart-abandonment,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,179,47,7,0,1,1,54.01,win-back,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,156,46,7,0,1,1,41.33,win-back,active,2025-01-21T00:00:00
+2025-01-20T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,72,31,6,0,2,2,95.16,replenishment,active,2025-01-21T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,139,77,17,1,4,4,133.8,welcome-series,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,153,84,18,0,5,5,161.87,welcome-series,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,172,92,22,1,5,5,213.58,welcome-series,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,126,69,10,0,1,1,33.76,post-purchase,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,131,70,9,0,1,1,37.75,post-purchase,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,120,68,10,0,1,1,48.98,post-purchase,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,211,82,13,1,2,2,76.06,browse-abandonment,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,113,53,12,0,5,5,184.84,cart-abandonment,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,91,43,9,0,4,4,188.8,cart-abandonment,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,187,50,7,0,1,1,45.74,win-back,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,151,45,6,0,1,1,40.65,win-back,active,2025-01-28T00:00:00
+2025-01-27T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,69,28,5,0,1,1,33.74,replenishment,active,2025-01-28T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,146,81,15,0,4,4,166.96,welcome-series,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,181,100,19,0,7,7,232.69,welcome-series,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,183,97,24,1,5,5,255.33,welcome-series,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,116,68,7,0,2,2,104.32,post-purchase,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,121,65,9,0,1,1,44.97,post-purchase,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,118,71,9,0,2,2,65.31,post-purchase,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,236,96,14,1,3,3,150.67,browse-abandonment,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,125,61,13,0,6,6,232.93,cart-abandonment,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,119,51,13,0,6,6,200.12,cart-abandonment,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,185,50,6,0,1,1,41.35,win-back,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,172,48,7,0,1,1,45.29,win-back,active,2025-02-04T00:00:00
+2025-02-03T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,87,39,8,0,1,1,42.14,replenishment,active,2025-02-04T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,140,66,18,0,4,4,213.86,welcome-series,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,150,83,17,0,6,6,288.79,welcome-series,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,153,73,15,0,4,4,139.83,welcome-series,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,126,75,8,0,1,1,36.86,post-purchase,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,109,64,9,0,1,1,32.03,post-purchase,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,111,65,8,0,1,1,32.35,post-purchase,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,214,86,12,1,2,2,69.94,browse-abandonment,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,99,40,9,0,4,4,181.61,cart-abandonment,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,95,44,10,0,4,4,139.72,cart-abandonment,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,182,49,7,1,1,1,36.48,win-back,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,153,42,6,0,1,1,48.24,win-back,active,2025-02-11T00:00:00
+2025-02-10T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,102,38,8,0,2,2,75.65,replenishment,active,2025-02-11T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,180,95,20,0,5,5,245.2,welcome-series,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,157,85,19,0,6,6,268.25,welcome-series,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,184,90,25,1,6,7,356.81,welcome-series,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,125,73,9,0,2,2,74.17,post-purchase,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,145,86,13,0,2,2,86.46,post-purchase,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,129,70,11,0,2,2,102.46,post-purchase,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,216,86,11,0,2,2,98.75,browse-abandonment,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,97,41,10,0,4,4,136.91,cart-abandonment,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,112,46,11,0,6,7,328.43,cart-abandonment,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,179,47,7,0,1,1,46.16,win-back,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,193,59,6,0,1,1,33.89,win-back,active,2025-02-18T00:00:00
+2025-02-17T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,96,43,9,0,2,2,105.67,replenishment,active,2025-02-18T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,183,96,21,1,7,7,274.79,welcome-series,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,146,77,15,0,4,4,187.13,welcome-series,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,160,80,21,0,4,4,182.69,welcome-series,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,145,91,12,0,1,1,45.08,post-purchase,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,127,71,10,0,1,1,35.14,post-purchase,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,155,96,11,0,2,2,79.05,post-purchase,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,219,87,14,0,2,2,102.17,browse-abandonment,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,94,44,9,0,4,4,158.71,cart-abandonment,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,107,52,12,0,5,5,172.61,cart-abandonment,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,191,54,7,1,1,1,40.37,win-back,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,197,59,6,1,1,1,39.75,win-back,active,2025-02-25T00:00:00
+2025-02-24T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,87,36,6,0,2,2,89.47,replenishment,active,2025-02-25T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,176,97,22,0,5,5,236.21,welcome-series,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,194,90,26,1,6,6,253.15,welcome-series,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,174,91,20,0,6,6,306.64,welcome-series,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,175,95,14,0,2,2,74.99,post-purchase,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,170,106,15,0,2,2,88.88,post-purchase,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,168,98,12,0,2,2,66.74,post-purchase,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,280,99,15,2,3,3,96.35,browse-abandonment,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,140,57,14,1,7,7,254.81,cart-abandonment,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,108,50,11,0,4,4,176.83,cart-abandonment,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,226,63,9,1,1,1,36.5,win-back,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,206,54,8,0,1,1,42.21,win-back,active,2025-03-04T00:00:00
+2025-03-03T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,126,54,12,0,3,3,116.95,replenishment,active,2025-03-04T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,189,87,20,1,7,7,241.34,welcome-series,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,207,114,25,1,6,6,311.52,welcome-series,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,208,104,27,1,7,7,339.19,welcome-series,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,159,85,13,0,2,2,92.64,post-purchase,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,182,109,15,0,2,2,100.09,post-purchase,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,159,95,11,0,2,2,89.55,post-purchase,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,290,108,16,1,4,4,128.71,browse-abandonment,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,124,51,13,0,5,5,193.65,cart-abandonment,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,130,61,13,0,5,5,246.14,cart-abandonment,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,236,70,8,0,1,1,43.25,win-back,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,215,53,9,1,1,1,49.79,win-back,active,2025-03-11T00:00:00
+2025-03-10T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,124,48,11,0,3,3,112.41,replenishment,active,2025-03-11T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,181,99,22,0,5,5,236.78,welcome-series,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,169,92,17,1,6,6,268.78,welcome-series,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,163,74,21,0,6,6,282.72,welcome-series,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,139,75,11,0,2,2,75.87,post-purchase,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,129,68,9,0,1,1,35.13,post-purchase,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,134,73,11,0,2,2,65.92,post-purchase,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,244,85,12,0,2,2,107.31,browse-abandonment,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,132,55,11,0,5,5,228.95,cart-abandonment,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,104,46,11,0,4,4,189.78,cart-abandonment,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,202,56,6,0,1,1,37.05,win-back,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,191,53,6,0,1,1,49.1,win-back,active,2025-03-18T00:00:00
+2025-03-17T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,114,45,10,0,2,2,97.67,replenishment,active,2025-03-18T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,166,77,17,0,4,4,135.21,welcome-series,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,186,89,23,1,5,5,167.83,welcome-series,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,160,74,18,1,5,5,197.35,welcome-series,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,145,72,10,1,2,2,75.51,post-purchase,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,155,92,10,0,2,2,109.51,post-purchase,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,132,67,10,0,1,1,47.04,post-purchase,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,258,88,14,1,2,2,72.05,browse-abandonment,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,124,51,10,0,6,6,230.21,cart-abandonment,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,119,50,11,0,5,5,201.67,cart-abandonment,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,176,44,6,1,1,1,33.25,win-back,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,211,51,8,0,1,1,44.63,win-back,active,2025-03-25T00:00:00
+2025-03-24T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,95,34,7,0,2,2,105.31,replenishment,active,2025-03-25T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,179,94,18,0,5,5,260.18,welcome-series,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,159,70,18,1,6,6,323.16,welcome-series,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,158,81,16,0,6,6,291.42,welcome-series,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,129,74,10,0,1,1,47.25,post-purchase,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,124,68,9,0,1,1,51.67,post-purchase,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,136,78,10,0,2,2,65.45,post-purchase,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,260,98,14,0,3,3,102.58,browse-abandonment,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,97,38,7,0,5,5,271.32,cart-abandonment,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,104,47,9,0,5,5,219.39,cart-abandonment,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,176,46,6,0,1,1,37.56,win-back,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,184,43,7,0,1,1,50.34,win-back,active,2025-04-01T00:00:00
+2025-03-31T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,106,39,10,0,2,2,100.13,replenishment,active,2025-04-01T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,206,99,23,1,7,7,317.19,welcome-series,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,191,87,20,0,7,7,295.13,welcome-series,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,187,91,18,0,5,5,255.86,welcome-series,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,170,95,12,0,2,2,109.57,post-purchase,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,176,90,13,0,2,2,82.0,post-purchase,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,173,93,12,0,2,2,71.27,post-purchase,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,272,91,13,0,3,3,122.98,browse-abandonment,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,110,49,9,0,4,4,132.44,cart-abandonment,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,149,62,11,1,7,7,240.04,cart-abandonment,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,228,53,8,0,1,1,49.16,win-back,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,225,55,7,0,2,2,83.14,win-back,active,2025-04-08T00:00:00
+2025-04-07T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,109,43,7,0,2,2,109.21,replenishment,active,2025-04-08T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,185,89,17,0,6,6,326.63,welcome-series,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,191,82,23,1,6,6,238.22,welcome-series,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,186,91,22,1,5,5,215.6,welcome-series,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,153,81,10,0,2,2,69.8,post-purchase,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,152,78,10,0,2,2,87.63,post-purchase,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,148,72,10,0,2,2,105.84,post-purchase,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,248,82,15,1,3,3,105.93,browse-abandonment,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,146,59,13,0,6,6,294.65,cart-abandonment,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,138,52,11,0,6,6,324.83,cart-abandonment,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,229,53,8,0,1,1,37.28,win-back,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,222,59,8,1,2,2,96.74,win-back,active,2025-04-15T00:00:00
+2025-04-14T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,107,44,9,0,2,2,81.94,replenishment,active,2025-04-15T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,180,91,19,0,5,5,191.56,welcome-series,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,176,89,19,0,7,8,316.11,welcome-series,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,176,73,17,0,5,5,195.98,welcome-series,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,175,98,13,0,2,2,80.3,post-purchase,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,139,68,10,0,2,2,94.0,post-purchase,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,175,92,11,0,2,2,72.87,post-purchase,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,265,91,12,1,3,3,136.59,browse-abandonment,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,122,47,10,0,4,4,183.91,cart-abandonment,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,119,44,10,0,5,5,212.26,cart-abandonment,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,197,51,7,1,1,1,32.94,win-back,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,200,49,7,0,1,1,39.64,win-back,active,2025-04-22T00:00:00
+2025-04-21T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,88,31,7,0,1,1,39.48,replenishment,active,2025-04-22T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,192,93,20,1,8,8,288.64,welcome-series,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,181,87,20,0,5,5,274.43,welcome-series,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,191,95,18,1,6,6,265.31,welcome-series,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,139,66,10,0,1,1,39.87,post-purchase,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,136,72,9,0,2,2,103.24,post-purchase,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,134,74,10,0,2,2,86.89,post-purchase,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,245,88,11,0,2,2,102.93,browse-abandonment,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,108,45,9,0,5,5,240.51,cart-abandonment,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,118,42,10,0,4,4,142.61,cart-abandonment,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,198,48,7,0,1,1,43.75,win-back,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,191,49,5,0,1,1,48.26,win-back,active,2025-04-29T00:00:00
+2025-04-28T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,78,29,6,0,2,2,108.35,replenishment,active,2025-04-29T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,199,97,22,1,8,8,319.56,welcome-series,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,172,83,18,0,5,5,258.67,welcome-series,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,178,88,15,0,6,6,281.34,welcome-series,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,136,67,8,0,2,2,90.55,post-purchase,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,152,74,10,1,2,2,88.1,post-purchase,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,147,68,11,0,2,2,75.19,post-purchase,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,274,92,14,0,3,3,98.1,browse-abandonment,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,132,56,10,0,5,5,263.16,cart-abandonment,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,116,49,8,0,4,4,148.53,cart-abandonment,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,198,44,6,0,1,1,36.46,win-back,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,188,48,6,0,1,1,39.26,win-back,active,2025-05-06T00:00:00
+2025-05-05T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,117,46,8,0,2,2,70.25,replenishment,active,2025-05-06T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,199,88,19,1,6,7,366.21,welcome-series,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,206,83,19,1,7,8,322.07,welcome-series,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,202,84,20,0,7,8,310.41,welcome-series,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,157,71,10,0,2,2,88.66,post-purchase,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,153,81,9,0,2,2,98.67,post-purchase,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,164,77,12,0,2,2,85.85,post-purchase,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,260,77,11,1,3,3,140.94,browse-abandonment,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,109,43,8,0,5,5,266.13,cart-abandonment,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,148,56,11,1,5,5,213.71,cart-abandonment,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,222,51,7,1,1,1,52.45,win-back,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,216,53,6,0,1,1,46.73,win-back,active,2025-05-13T00:00:00
+2025-05-12T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,126,45,9,0,3,3,156.26,replenishment,active,2025-05-13T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,171,72,15,0,6,6,247.16,welcome-series,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,172,74,19,1,6,6,283.74,welcome-series,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,193,81,21,1,7,7,331.25,welcome-series,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,164,83,11,0,2,2,102.0,post-purchase,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,167,89,10,1,2,2,81.91,post-purchase,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,165,76,10,1,2,2,83.36,post-purchase,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,245,81,10,0,3,3,148.29,browse-abandonment,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,132,47,10,1,6,7,299.46,cart-abandonment,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,119,40,10,0,4,4,162.3,cart-abandonment,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,219,55,6,1,1,1,52.59,win-back,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,199,50,7,0,1,1,41.86,win-back,active,2025-05-20T00:00:00
+2025-05-19T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,98,36,8,0,2,2,105.38,replenishment,active,2025-05-20T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,184,74,19,0,6,6,263.83,welcome-series,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,199,87,18,0,6,6,237.34,welcome-series,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,168,78,17,0,6,7,316.32,welcome-series,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,133,65,7,0,2,2,81.35,post-purchase,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,164,76,9,1,2,2,69.81,post-purchase,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,144,73,10,0,2,2,108.38,post-purchase,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,265,89,13,1,3,3,134.31,browse-abandonment,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,124,45,10,0,5,5,256.16,cart-abandonment,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,119,44,9,0,6,6,284.21,cart-abandonment,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,198,49,6,1,1,1,51.76,win-back,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,205,47,7,0,1,1,54.94,win-back,active,2025-05-27T00:00:00
+2025-05-26T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,98,31,6,0,2,2,67.96,replenishment,active,2025-05-27T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,159,65,16,0,6,6,269.49,welcome-series,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,186,84,17,1,6,6,235.81,welcome-series,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,188,81,18,0,5,5,167.62,welcome-series,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,151,64,11,0,1,1,48.05,post-purchase,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,134,63,9,0,1,1,45.28,post-purchase,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,150,70,8,0,1,1,53.07,post-purchase,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,257,81,14,1,3,3,129.48,browse-abandonment,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,120,47,9,0,5,5,205.26,cart-abandonment,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,118,41,8,0,6,6,315.5,cart-abandonment,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,196,44,6,0,1,1,43.6,win-back,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,198,48,5,0,1,1,35.22,win-back,active,2025-06-03T00:00:00
+2025-06-02T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,92,34,6,0,2,2,67.25,replenishment,active,2025-06-03T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,155,61,15,0,4,4,207.09,welcome-series,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,142,54,11,0,5,5,270.37,welcome-series,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,137,53,14,0,4,4,157.62,welcome-series,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,130,63,7,0,2,2,81.04,post-purchase,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,129,63,7,0,1,1,48.1,post-purchase,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,128,58,8,0,1,1,38.33,post-purchase,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,218,65,11,1,2,2,79.39,browse-abandonment,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,99,36,7,0,4,4,136.77,cart-abandonment,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,105,35,7,0,5,5,219.51,cart-abandonment,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,192,43,6,0,1,1,40.22,win-back,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,188,41,5,1,1,1,43.39,win-back,active,2025-06-10T00:00:00
+2025-06-09T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,99,34,6,0,2,2,99.32,replenishment,active,2025-06-10T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,134,51,12,0,4,4,187.11,welcome-series,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,151,66,13,1,4,4,213.57,welcome-series,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,174,69,17,1,7,8,340.2,welcome-series,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,129,58,7,0,1,1,54.83,post-purchase,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,148,66,10,0,2,2,71.18,post-purchase,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,118,53,6,0,2,2,90.97,post-purchase,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,214,66,9,1,2,2,65.61,browse-abandonment,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,111,42,8,0,4,4,183.8,cart-abandonment,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,122,43,8,0,4,4,197.67,cart-abandonment,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,178,35,5,0,1,1,35.14,win-back,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,190,44,5,0,1,1,47.8,win-back,active,2025-06-17T00:00:00
+2025-06-16T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,92,28,6,0,2,2,106.27,replenishment,active,2025-06-17T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,188,72,15,1,5,5,230.46,welcome-series,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,183,77,16,1,6,6,199.82,welcome-series,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,176,65,18,1,6,6,203.04,welcome-series,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,130,60,6,1,1,1,53.77,post-purchase,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,143,60,7,0,2,2,84.46,post-purchase,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,132,54,9,0,2,2,79.34,post-purchase,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,241,76,12,0,3,3,117.38,browse-abandonment,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,134,45,11,0,5,5,249.73,cart-abandonment,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,101,32,8,0,3,3,116.44,cart-abandonment,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,185,41,6,1,1,1,46.16,win-back,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,199,47,5,1,1,1,44.91,win-back,active,2025-06-24T00:00:00
+2025-06-23T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,85,28,5,0,2,2,96.11,replenishment,active,2025-06-24T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL001,Welcome Series,WS-Email1,Welcome Email 1 - Intro & 10% Off,email,live,175,70,14,0,7,7,291.78,welcome-series,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL002,Welcome Series,WS-Email2,Welcome Email 2 - Bestsellers,email,live,136,51,11,0,4,4,189.66,welcome-series,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL003,Welcome Series,WS-Email3,Welcome Email 3 - Reviews & Trust,email,live,165,65,14,0,6,6,322.87,welcome-series,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL004,Post-Purchase,PP-Email1,Order Confirmation + Cross-sell,email,live,118,55,6,0,1,1,33.42,post-purchase,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL005,Post-Purchase,PP-Email2,How to Use Your Product,email,live,146,68,9,0,2,2,81.85,post-purchase,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL006,Post-Purchase,PP-Email3,Review Request (14 days),email,live,132,56,7,0,2,2,86.17,post-purchase,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL007,Browse Abandonment,BA-Email1,Still Interested?,email,live,226,68,11,0,2,2,92.01,browse-abandonment,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL008,Cart Abandonment,CA-Email1,You Left Something Behind,email,live,90,32,6,0,3,3,118.76,cart-abandonment,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL009,Cart Abandonment,CA-Email2,Last Chance + Free Shipping,email,live,115,39,9,0,4,4,138.26,cart-abandonment,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL010,Win-Back,WB-Email1,We Miss You (60 days),email,live,182,37,5,1,1,1,34.44,win-back,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL011,Win-Back,WB-Email2,15% Off to Come Back (90 days),email,live,183,37,5,0,1,1,49.92,win-back,active,2025-07-01T00:00:00
+2025-06-30T00:00:00,Vitalis UK,GBP,FL012,Replenishment,RP-Email1,Time to Restock? (30 days),email,live,92,28,6,0,2,2,108.95,replenishment,active,2025-07-01T00:00:00
