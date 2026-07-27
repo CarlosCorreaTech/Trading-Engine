@@ -13,6 +13,10 @@ simply missed it.
 
 from __future__ import annotations
 
+import re
+
+import pandas as pd
+
 from src.config import RECOMMENDATION_RULES
 from src.detection.signal import Classification, Signal
 from src.recommendations.confidence import score_confidence
@@ -28,6 +32,15 @@ def _by_id(signals: list[Signal]) -> dict[str, Signal]:
     return {s.signal_id: s for s in signals}
 
 
+def _slug(text: str) -> str:
+    """Identifier-safe version of a name: lowercase, alphanumerics and underscores.
+
+    Recommendation ids end up in URLs and log lines, so characters like '%'
+    (as in "CBD Oil 20%") must not survive into them.
+    """
+    return re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
+
+
 def rule_reallocate_paid_budget(signals: list[Signal], con) -> list[Recommendation]:
     """Move budget away from a channel whose acquisition economics have broken,
     toward one that has demonstrated it can absorb more.
@@ -40,14 +53,15 @@ def rule_reallocate_paid_budget(signals: list[Signal], con) -> list[Recommendati
     without degrading, because the most common way a reallocation fails is
     pouring budget into a channel that was efficient precisely because it was
     small.
+
+    The rule is written over whatever paid channels the warehouse contains:
+    any channel showing both impairment signals is a candidate source, and any
+    other paid channel that is at least breaking even, is not itself impaired,
+    and has demonstrated spare capacity is a candidate destination. On this
+    dataset that resolves to Meta and Google, but nothing below assumes it.
     """
     params = RECOMMENDATION_RULES["budget_reallocation"]
     index = _by_id(signals)
-
-    cpc_signal = index.get("cpc_inflation_meta")
-    payback_signal = index.get("payback_breach_meta")
-    if cpc_signal is None or payback_signal is None:
-        return []
 
     economics = query(
         con,
@@ -59,114 +73,149 @@ def rule_reallocate_paid_budget(signals: list[Signal], con) -> list[Recommendati
         ORDER BY channel, month_start
         """,
     )
-    meta = economics[economics["channel"] == "Meta"]
-    google = economics[economics["channel"] == "Google"]
-    if meta.empty or google.empty:
-        return []
+    channels = sorted(economics["channel"].unique())
 
-    meta_now = meta.iloc[-1]
-    google_now = google.iloc[-1]
+    recommendations: list[Recommendation] = []
+    for source in channels:
+        cpc_signal = index.get(f"cpc_inflation_{_slug(source)}")
+        payback_signal = index.get(f"payback_breach_{_slug(source)}")
+        if cpc_signal is None or payback_signal is None:
+            continue
+        source_now = economics[economics["channel"] == source].iloc[-1]
 
-    # Google's demonstrated capacity: the most it has ever absorbed in a month
-    # while staying comfortably profitable.
-    healthy = google[google["payback_ratio_pessimistic"] >= params["min_destination_payback"]]
-    if healthy.empty:
-        return []
-    best = healthy.loc[healthy["spend"].idxmax()]
-    proven_capacity = float(best["spend"])
-    raw_headroom = max(0.0, proven_capacity - float(google_now["spend"]))
+        # Candidate destinations: paid channels that are not themselves broken.
+        # This is a routing decision, not a corroboration: a destination below
+        # break-even or with its own payback breach is not a worse version of
+        # this recommendation, it is no recommendation at all.
+        candidates = []
+        for destination in channels:
+            if destination == source:
+                continue
+            if index.get(f"payback_breach_{_slug(destination)}") is not None:
+                continue
+            dest = economics[economics["channel"] == destination]
+            dest_now = dest.iloc[-1]
+            if float(dest_now["payback_ratio_pessimistic"]) < 1.0:
+                continue
 
-    # Discount headroom evidenced by peak trading months.
-    peak_month = best["month_start"].month in (11, 12)
-    headroom = raw_headroom * (params["peak_season_headroom_haircut"] if peak_month else 1.0)
+            # The destination's demonstrated capacity: the most it has ever
+            # absorbed in a month while staying comfortably profitable.
+            healthy = dest[dest["payback_ratio_pessimistic"] >= params["min_destination_payback"]]
+            if healthy.empty:
+                continue
+            best = healthy.loc[healthy["spend"].idxmax()]
+            proven_capacity = float(best["spend"])
+            raw_headroom = max(0.0, proven_capacity - float(dest_now["spend"]))
 
-    max_shift = float(meta_now["spend"]) * params["max_shift_pct_of_source"]
-    shift = min(max_shift, headroom)
-    if shift <= 0:
-        return []
+            # Discount headroom evidenced by peak trading months.
+            peak_month = best["month_start"].month in (11, 12)
+            headroom = raw_headroom * (
+                params["peak_season_headroom_haircut"] if peak_month else 1.0
+            )
+            if headroom <= 0:
+                continue
+            candidates.append((destination, dest_now, proven_capacity, raw_headroom, peak_month, headroom))
 
-    meta_cac = float(meta_now["cac_attributed"])
-    google_cac = float(google_now["cac_attributed"])
-    contribution = float(google_now["contribution_per_new_customer"])
-
-    checks = {
-        "destination_channel_is_profitable":
-            float(google_now["payback_ratio_pessimistic"]) >= params["min_destination_payback"],
-        "destination_has_proven_capacity_at_this_spend": headroom > 0,
-        "source_is_worse_on_both_attribution_bounds":
-            meta_cac > google_cac
-            and float(meta_now["cac_with_unattributed"]) > float(google_now["cac_with_unattributed"]),
-        "source_impairment_is_persistent":
-            payback_signal.persistence_days >= 10 and cpc_signal.persistence_days >= 28,
-    }
-
-    confidence = score_confidence([cpc_signal, payback_signal], checks)
-    customers_gained = shift / google_cac
-    customers_lost = shift / meta_cac
-
-    return [
-        Recommendation(
-            recommendation_id="reallocate_meta_to_google",
-            title="Move GBP {:,.0f} of monthly Meta budget to Google".format(shift),
-            action_type=ActionType.BUDGET_REALLOCATION,
-            reversibility=Reversibility.REVERSIBLE,
-            action=(
-                f"Reduce Meta spend by GBP {shift:,.0f} a month "
-                f"({shift / float(meta_now['spend']):.0%} of current Meta budget) and add the "
-                f"same amount to Google. Implement over two weeks rather than at once, and "
-                f"stop if Google's cost per acquisition rises above GBP "
-                f"{google_cac * 1.2:,.2f}."
-            ),
-            rationale=(
-                f"Meta now costs GBP {meta_cac:,.2f} to acquire a customer against GBP "
-                f"{google_cac:,.2f} on Google, so the same money buys roughly "
-                f"{meta_cac / google_cac:.1f} times as many customers on Google. Meta's cost "
-                f"per click has risen {cpc_signal.magnitude:.0%} since "
-                f"{cpc_signal.detected_at:%d %B}, and gross profit on a new Meta customer's "
-                f"first order no longer covers what it costs to acquire them. Google's "
-                f"economics have been stable throughout the same period.\n\n"
-                f"The amount is capped by evidence rather than ambition. Google has "
-                f"previously absorbed GBP {proven_capacity:,.0f} in a month while staying "
-                f"profitable, which is GBP {raw_headroom:,.0f} above its current spend"
-                + (
-                    f", but that was a peak trading month so the headroom is discounted by "
-                    f"{params['peak_season_headroom_haircut']:.0%} to GBP {headroom:,.0f}"
-                    if peak_month else ""
-                )
-                + f". Moving GBP {shift:,.0f} should win roughly "
-                f"{customers_gained:.0f} customers on Google in place of about "
-                f"{customers_lost:.0f} lost on Meta, a net gain of about "
-                f"{customers_gained - customers_lost:.0f} customers a month at the same cost."
-            ),
-            confidence=confidence,
-            supporting_signal_ids=[cpc_signal.signal_id, payback_signal.signal_id],
-            parameters={
-                "source_channel": "Meta",
-                "destination_channel": "Google",
-                "monthly_shift_gbp": round(shift, 2),
-                "source_monthly_spend": round(float(meta_now["spend"]), 2),
-                "destination_monthly_spend": round(float(google_now["spend"]), 2),
-                "source_cac": round(meta_cac, 2),
-                "destination_cac": round(google_cac, 2),
-                "destination_contribution_per_customer": round(contribution, 2),
-                "destination_proven_capacity": round(proven_capacity, 2),
-                "headroom_after_haircut": round(headroom, 2),
-                "expected_customers_gained": round(customers_gained, 1),
-                "expected_customers_lost": round(customers_lost, 1),
-            },
-            caveats=[
-                "Assumes Google's cost per acquisition holds as spend increases. It will "
-                "degrade at some point; the cap on the move and the CPA stop-loss are there "
-                "to find that point cheaply rather than expensively.",
-                "27% of orders cannot be attributed to any channel, so both channels' "
-                "acquisition costs are ranges. The conclusion holds at both ends of the "
-                "range, which is why it is safe to act on.",
-                "Meta's true contribution may be understated if it drives demand that "
-                "converts later through direct or search. Last-click attribution "
-                "systematically underrates upper-funnel channels.",
-            ],
+        if not candidates:
+            continue
+        # Where several destinations qualify, prefer the one where the shifted
+        # money buys the most customers.
+        destination, dest_now, proven_capacity, raw_headroom, peak_month, headroom = min(
+            candidates, key=lambda c: float(c[1]["cac_attributed"])
         )
-    ]
+
+        max_shift = float(source_now["spend"]) * params["max_shift_pct_of_source"]
+        shift = min(max_shift, headroom)
+        if shift <= 0:
+            continue
+
+        source_cac = float(source_now["cac_attributed"])
+        dest_cac = float(dest_now["cac_attributed"])
+        contribution = float(dest_now["contribution_per_new_customer"])
+
+        checks = {
+            "destination_channel_is_profitable":
+                float(dest_now["payback_ratio_pessimistic"]) >= params["min_destination_payback"],
+            "destination_shows_no_cost_inflation":
+                index.get(f"cpc_inflation_{_slug(destination)}") is None,
+            "source_is_worse_on_both_attribution_bounds":
+                source_cac > dest_cac
+                and float(source_now["cac_with_unattributed"]) > float(dest_now["cac_with_unattributed"]),
+            "source_impairment_is_persistent":
+                payback_signal.persistence_days >= 10 and cpc_signal.persistence_days >= 28,
+        }
+
+        confidence = score_confidence([cpc_signal, payback_signal], checks)
+        customers_gained = shift / dest_cac
+        customers_lost = shift / source_cac
+
+        recommendations.append(
+            Recommendation(
+                recommendation_id=f"reallocate_{_slug(source)}_to_{_slug(destination)}",
+                title=f"Move GBP {shift:,.0f} of monthly {source} budget to {destination}",
+                action_type=ActionType.BUDGET_REALLOCATION,
+                reversibility=Reversibility.REVERSIBLE,
+                action=(
+                    f"Reduce {source} spend by GBP {shift:,.0f} a month "
+                    f"({shift / float(source_now['spend']):.0%} of current {source} budget) and "
+                    f"add the same amount to {destination}. Implement over two weeks rather "
+                    f"than at once, and stop if {destination}'s cost per acquisition rises "
+                    f"above GBP {dest_cac * 1.2:,.2f}."
+                ),
+                rationale=(
+                    f"{source} now costs GBP {source_cac:,.2f} to acquire a customer against "
+                    f"GBP {dest_cac:,.2f} on {destination}, so the same money buys roughly "
+                    f"{source_cac / dest_cac:.1f} times as many customers on {destination}. "
+                    f"{source}'s cost per click has risen {cpc_signal.magnitude:.0%} since "
+                    f"{cpc_signal.detected_at:%d %B}, and gross profit on a new {source} "
+                    f"customer's first order no longer covers what it costs to acquire them. "
+                    f"{destination}'s economics have been stable throughout the same "
+                    f"period.\n\n"
+                    f"The amount is capped by evidence rather than ambition. {destination} "
+                    f"has previously absorbed GBP {proven_capacity:,.0f} in a month while "
+                    f"staying profitable, which is GBP {raw_headroom:,.0f} above its current "
+                    f"spend"
+                    + (
+                        f", but that was a peak trading month so the headroom is discounted "
+                        f"by {params['peak_season_headroom_haircut']:.0%} to GBP {headroom:,.0f}"
+                        if peak_month else ""
+                    )
+                    + f". Moving GBP {shift:,.0f} should win roughly "
+                    f"{customers_gained:.0f} customers on {destination} in place of about "
+                    f"{customers_lost:.0f} lost on {source}, a net gain of about "
+                    f"{customers_gained - customers_lost:.0f} customers a month at the same "
+                    f"cost."
+                ),
+                confidence=confidence,
+                supporting_signal_ids=[cpc_signal.signal_id, payback_signal.signal_id],
+                parameters={
+                    "source_channel": source,
+                    "destination_channel": destination,
+                    "monthly_shift_gbp": round(shift, 2),
+                    "source_monthly_spend": round(float(source_now["spend"]), 2),
+                    "destination_monthly_spend": round(float(dest_now["spend"]), 2),
+                    "source_cac": round(source_cac, 2),
+                    "destination_cac": round(dest_cac, 2),
+                    "destination_contribution_per_customer": round(contribution, 2),
+                    "destination_proven_capacity": round(proven_capacity, 2),
+                    "headroom_after_haircut": round(headroom, 2),
+                    "expected_customers_gained": round(customers_gained, 1),
+                    "expected_customers_lost": round(customers_lost, 1),
+                },
+                caveats=[
+                    f"Assumes {destination}'s cost per acquisition holds as spend increases. "
+                    f"It will degrade at some point; the cap on the move and the CPA "
+                    f"stop-loss are there to find that point cheaply rather than expensively.",
+                    "27% of orders cannot be attributed to any channel, so both channels' "
+                    "acquisition costs are ranges. The conclusion holds at both ends of the "
+                    "range, which is why it is safe to act on.",
+                    f"{source}'s true contribution may be understated if it drives demand "
+                    f"that converts later through direct or search. Last-click attribution "
+                    f"systematically underrates upper-funnel channels.",
+                ],
+            )
+        )
+    return recommendations
 
 
 def rule_restock_critical_inventory(signals: list[Signal], con) -> list[Recommendation]:
@@ -250,9 +299,17 @@ def rule_restock_critical_inventory(signals: list[Signal], con) -> list[Recommen
             current = float(biggest_growth.evidence.get("current_units_per_day", 0.0))
             if current > 0 and baseline > 0:
                 reversion_ratio = baseline / current
+        # A detected decline for any of these SKUs would mean restocking into
+        # falling demand, which is how excess stock happens. No signal means no
+        # detected decline; the detectors have already looked.
+        declining = [
+            s
+            for s in signals
+            if s.signal_id.startswith("velocity_") and s.entity in set(skus) and s.magnitude < 0
+        ]
         checks = {
             "cover_is_shorter_than_supplier_lead_time": soonest < lead_time,
-            "demand_is_stable_or_growing": bool(growth_signals) or soonest < lead_time,
+            "demand_is_not_in_detected_decline": not declining,
             "product_margin_is_positive": all(line["unit_margin"] > 0 for line in lines),
         }
         confidence = score_confidence(product_signals + growth_signals, checks)
@@ -268,7 +325,7 @@ def rule_restock_critical_inventory(signals: list[Signal], con) -> list[Recommen
 
         recommendations.append(
             Recommendation(
-                recommendation_id=f"restock_{product.lower().replace(' ', '_').replace('&', 'and')}",
+                recommendation_id=f"restock_{_slug(product)}",
                 title=f"Reorder {product}: {sum(line['reorder_units'] for line in lines):,} units, "
                       f"GBP {total_cost:,.0f}",
                 action_type=ActionType.INVENTORY_PURCHASE,
@@ -351,8 +408,17 @@ def rule_investigate_mix_economics(signals: list[Signal], con) -> list[Recommend
         return []
 
     top = max(growth, key=lambda s: s.magnitude)
-    product = top.evidence.get("variant_label", top.entity)
+    title_rows = query(
+        con,
+        "SELECT DISTINCT product_title FROM semantic.product_velocity WHERE sku = ?",
+        params=[top.entity],
+    )
+    product = str(title_rows["product_title"].iloc[0]) if not title_rows.empty else top.entity
 
+    # Before/after is split at the month the surge began, so "after" measures
+    # the economics of the mix the surge produced rather than an arbitrary
+    # calendar period.
+    surge_month = pd.Timestamp(top.detected_at).to_period("M").to_timestamp().date()
     mix = query(
         con,
         """
@@ -365,17 +431,18 @@ def rule_investigate_mix_economics(signals: list[Signal], con) -> list[Recommend
             GROUP BY 1, 2
         )
         SELECT product_title,
-               sum(units) FILTER (WHERE month_start < DATE '2025-01-01') AS units_before,
-               sum(units) FILTER (WHERE month_start >= DATE '2025-01-01') AS units_after,
-               sum(gross_profit) FILTER (WHERE month_start >= DATE '2025-01-01')
-                 / nullif(sum(units) FILTER (WHERE month_start >= DATE '2025-01-01'), 0)
+               sum(units) FILTER (WHERE month_start < ?) AS units_before,
+               sum(units) FILTER (WHERE month_start >= ?) AS units_after,
+               sum(gross_profit) FILTER (WHERE month_start >= ?)
+                 / nullif(sum(units) FILTER (WHERE month_start >= ?), 0)
                  AS profit_per_unit
         FROM monthly
         GROUP BY 1
         ORDER BY units_after DESC
         """,
+        params=[surge_month] * 4,
     )
-    surging = mix[mix["product_title"].str.contains("Vitamin D3", case=False, na=False)]
+    surging = mix[mix["product_title"] == product]
     profit_per_unit = float(surging["profit_per_unit"].iloc[0]) if not surging.empty else 0.0
     catalogue_profit_per_unit = float(
         (mix["profit_per_unit"] * mix["units_after"]).sum() / mix["units_after"].sum()
@@ -391,16 +458,16 @@ def rule_investigate_mix_economics(signals: list[Signal], con) -> list[Recommend
 
     return [
         Recommendation(
-            recommendation_id="investigate_d3_mix_economics",
-            title="Establish whether the Vitamin D3 surge is recruiting customers or diluting them",
+            recommendation_id=f"investigate_{_slug(product)}_mix_economics",
+            title=f"Establish whether the {product} surge is recruiting customers or diluting them",
             action_type=ActionType.INVESTIGATION,
             reversibility=Reversibility.REVERSIBLE,
             action=(
-                "Before increasing spend behind Vitamin D3, measure the repeat rate and "
-                "second-order value of customers whose first purchase was Vitamin D3, against "
-                "customers acquired on other products. If they trade up, treat it as an "
-                "acquisition product and fund it. If they do not, cap its share of paid "
-                "traffic and promote it as a cross-sell to existing customers instead."
+                f"Before increasing spend behind {product}, measure the repeat rate and "
+                f"second-order value of customers whose first purchase was {product}, against "
+                f"customers acquired on other products. If they trade up, treat it as an "
+                f"acquisition product and fund it. If they do not, cap its share of paid "
+                f"traffic and promote it as a cross-sell to existing customers instead."
             ),
             rationale=(
                 f"{product} sales are up {top.magnitude:.0%} since {top.detected_at:%d %B %Y}, "
@@ -409,7 +476,7 @@ def rule_investigate_mix_economics(signals: list[Signal], con) -> list[Recommend
                 f"and discounting are unchanged, so the fall is entirely this cheaper product "
                 f"taking a larger share of the mix. At roughly GBP {profit_per_unit:.2f} of "
                 f"gross profit per unit against GBP {catalogue_profit_per_unit:.2f} for the "
-                f"catalogue as a whole, each Vitamin D3 sale contributes less.\n\n"
+                f"catalogue as a whole, each {product} sale contributes less.\n\n"
                 f"That is not automatically bad. A cheap, high-volume product is a normal way "
                 f"to recruit customers, and it pays off if those customers come back for "
                 f"higher-value items. The engine cannot settle this from the data available, "
@@ -443,11 +510,21 @@ def rule_email_tracking_incident(signals: list[Signal], con) -> list[Recommendat
         return []
 
     flows = incident.evidence.get("flows_affected", [])
+
+    # Simultaneity is what makes this one incident rather than several
+    # coincidental content problems, so it is measured, not asserted. Each
+    # flow sends weekly, which makes a single send the resolution of any
+    # onset estimate; all flows starting to slip within a month of each other
+    # is simultaneous at that resolution, while onsets spread over a quarter
+    # would point to flows decaying independently.
+    onsets = [pd.Timestamp(d) for d in incident.evidence.get("flow_onsets", {}).values()]
+    onset_spread_days = int((max(onsets) - min(onsets)).days) if onsets else None
     checks = {
         "multiple_independent_flows_affected": len(flows) >= 2,
         "commercial_outcome_unaffected":
             abs(incident.evidence.get("mean_order_rate_change", 1.0)) <= 0.10,
-        "onset_is_simultaneous_across_flows": True,
+        "onset_is_simultaneous_across_flows":
+            onset_spread_days is not None and onset_spread_days <= 28,
     }
     confidence = score_confidence([incident], checks)
 
@@ -476,6 +553,7 @@ def rule_email_tracking_incident(signals: list[Signal], con) -> list[Recommendat
             parameters={
                 "flows_affected": flows,
                 "onset_date": str(incident.detected_at),
+                "onset_spread_days": onset_spread_days,
                 "open_rate_change": incident.evidence.get("mean_open_rate_change"),
                 "order_rate_change": incident.evidence.get("mean_order_rate_change"),
             },
@@ -502,16 +580,26 @@ def rule_refresh_declining_flow(signals: list[Signal], con) -> list[Recommendati
 
     signal = max(declining, key=lambda s: abs(s.evidence.get("order_rate_change", 0.0)))
     order_change = signal.evidence.get("order_rate_change", 0.0)
+
+    # If this flow were among those swept up in the account-level tracking
+    # incident, its decline would already be explained and rebuilding it would
+    # be acting on a measurement fault. The classification split upstream
+    # should guarantee this, but the check re-derives it from the incident's
+    # own evidence rather than trusting the plumbing.
+    incident = next(
+        (s for s in signals if s.signal_id == "email_tracking_incident_account"), None
+    )
+    affected = set(incident.evidence.get("flows_affected", [])) if incident else set()
     checks = {
         "commercial_outcome_declined": order_change < -0.10,
-        "not_explained_by_account_tracking_incident": True,
+        "not_explained_by_account_tracking_incident": signal.entity not in affected,
         "engagement_and_conversion_moved_together": signal.magnitude < 0 and order_change < 0,
     }
     confidence = score_confidence([signal], checks)
 
     return [
         Recommendation(
-            recommendation_id=f"refresh_flow_{signal.entity.lower().replace(' ', '_').replace('-', '_')}",
+            recommendation_id=f"refresh_flow_{_slug(signal.entity)}",
             title=f"Rebuild the {signal.entity} email flow",
             action_type=ActionType.FLOW_OPTIMISATION,
             reversibility=Reversibility.REVERSIBLE,
@@ -555,7 +643,14 @@ def rule_suppressed_signals(signals: list[Signal], con) -> list[Recommendation]:
 
     for signal in signals:
         if signal.classification is Classification.ARTIFACT:
-            confidence = score_confidence([signal], {"artifact_tests_agree": True})
+            # The adjudicator records each artifact test's outcome in the
+            # signal's evidence. Refusing to act is itself a judgement, and it
+            # should rest on more than one test passing: a verdict carried by
+            # a single test is exactly the kind that reverses on new data.
+            tests = [v for k, v in signal.evidence.items() if k.startswith("test_")]
+            confidence = score_confidence(
+                [signal], {"artifact_tests_agree": sum(bool(t) for t in tests) >= 2}
+            )
             recommendations.append(
                 Recommendation(
                     recommendation_id=f"no_action_{signal.signal_id}",
@@ -574,7 +669,14 @@ def rule_suppressed_signals(signals: list[Signal], con) -> list[Recommendation]:
                 )
             )
         elif signal.classification is Classification.EXPLAINED and signal.signal_id == "aov_decline":
-            confidence = score_confidence([signal], {"decomposition_isolates_cause": True})
+            # The AOV detector only classifies the fall EXPLAINED when its
+            # decomposition attributes it to mix, and that attribution is
+            # recorded in the evidence; the check reads it from there so a
+            # signal that arrived EXPLAINED without a mix attribution would
+            # score lower rather than sail through.
+            confidence = score_confidence(
+                [signal], {"decomposition_isolates_cause": bool(signal.evidence.get("mix_driven"))}
+            )
             recommendations.append(
                 Recommendation(
                     recommendation_id="no_action_aov_decline",

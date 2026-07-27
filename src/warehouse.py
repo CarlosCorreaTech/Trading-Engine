@@ -26,8 +26,17 @@ def connect(warehouse_path: Path = WAREHOUSE_PATH) -> duckdb.DuckDBPyConnection:
     return duckdb.connect(str(warehouse_path), read_only=True)
 
 
-def query(con: duckdb.DuckDBPyConnection, sql: str) -> pd.DataFrame:
-    return con.execute(sql).fetchdf()
+def query(
+    con: duckdb.DuckDBPyConnection, sql: str, params: list | None = None
+) -> pd.DataFrame:
+    """Run a query, with values bound as parameters rather than formatted in.
+
+    Every value here comes from config or from the warehouse itself, so this is
+    not an injection defence; it is so that a value is never re-parsed as SQL,
+    which is the difference between a threshold of 45.0 and one of 45.0e6 being
+    a data mistake rather than a syntax accident.
+    """
+    return con.execute(sql, params).fetchdf() if params else con.execute(sql).fetchdf()
 
 
 def quality_scores(con: duckdb.DuckDBPyConnection) -> dict[str, float]:

@@ -20,12 +20,16 @@ problem, it is a question about whether the data behaves like a business.
 
 from __future__ import annotations
 
-import datetime as dt
-
 import numpy as np
+import pandas as pd
 
 from src.detection.signal import Classification, Signal, SignalType
 from src.warehouse import query
+
+# How many opening cohorts count as "the earliest cohorts" in the
+# concentration test. Three months covers the brand's opening quarter without
+# reaching into the period under suspicion.
+_EARLY_COHORT_MONTHS = 3
 
 # A cohort repeat rate below this is treated as "nobody came back at all",
 # which no real cohort of a thousand-plus customers produces.
@@ -62,19 +66,38 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
     earliest_rate = float(mature["repeat_rate_90d"].iloc[0])
     latest_rate = float(mature["repeat_rate_90d"].iloc[-1])
 
+    first_cohort = pd.Timestamp(cohorts["cohort_month"].min())
+    first_zero_cohort = (
+        pd.Timestamp(zero_cohorts["cohort_month"].min()) if not zero_cohorts.empty else None
+    )
+
     # --- Test 2: is repeat purchasing confined to the earliest cohorts? -----
+    # "Early" is the brand's opening quarter, anchored to the first cohort in
+    # the data. "Recent" is everything after the first dead cohort was
+    # acquired: from the following month onward, every repeat order placed is
+    # one the dead cohorts had the opportunity to contribute to and, if the
+    # collapse were real, visibly would not. When no cohort is dead the test
+    # cannot indict anything, so it falls back to the second half of the
+    # cohort range purely to fill in the evidence field.
+    early_cutoff = (first_cohort + pd.DateOffset(months=_EARLY_COHORT_MONTHS - 1)).date()
+    if first_zero_cohort is not None:
+        recent_from = (first_zero_cohort + pd.DateOffset(months=1)).date()
+    else:
+        midpoint = len(mature) // 2
+        recent_from = pd.Timestamp(mature["cohort_month"].iloc[midpoint]).date()
     concentration = query(
         con,
         """
         SELECT
-            count(*) FILTER (WHERE c.cohort_month <= DATE '2024-09-01')::DOUBLE
+            count(*) FILTER (WHERE c.cohort_month <= ?)::DOUBLE
                 / nullif(count(*), 0) AS early_cohort_share,
-            count(*)                  AS repeat_orders_2025
+            count(*)                  AS recent_repeat_orders
         FROM core.fct_orders o
         JOIN core.dim_customer c USING (customer_id)
         WHERE o.is_valid_order AND NOT o.is_first_order
-          AND o.order_date >= DATE '2025-01-01'
+          AND o.order_date >= ?
         """,
+        params=[early_cutoff, recent_from],
     )
     early_share = float(concentration["early_cohort_share"].iloc[0])
 
@@ -98,9 +121,8 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
         GROUP BY 1 ORDER BY 1
         """,
     )
-    if not zero_cohorts.empty:
-        suspect_from = zero_cohorts["cohort_month"].min()
-        window = monthly[monthly["month_start"] >= suspect_from]
+    if first_zero_cohort is not None:
+        window = monthly[pd.to_datetime(monthly["month_start"]) >= first_zero_cohort]
     else:
         window = monthly
     shares = window["repeat_share"].dropna().to_numpy()
@@ -133,8 +155,9 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
             f"be made from it. Three findings rule out a genuine collapse: "
             f"{len(zero_cohorts)} fully mature cohorts show a 90-day repeat rate of "
             f"effectively zero, which no real cohort of this size produces; "
-            f"{early_share:.0%} of all 2025 repeat orders come from customers acquired in "
-            f"the first three months; and across exactly the months those dead cohorts "
+            f"{early_share:.0%} of repeat orders since {recent_from:%B %Y} come from "
+            f"customers acquired in the brand's opening quarter; and across exactly the "
+            f"months those dead cohorts "
             f"cover, the brand's overall repeat order share holds flat at roughly "
             f"{np.mean(shares):.0%} of orders. The last two cannot both be true of a real "
             f"business, because if no new customer ever returned the repeat share would "
@@ -158,7 +181,11 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
             entity="Business",
             metric="repeat_rate_90d",
             metric_family="ltv",
-            detected_at=dt.date(2024, 12, 1),
+            detected_at=(
+                first_zero_cohort.date()
+                if first_zero_cohort is not None
+                else pd.Timestamp(mature["cohort_month"].iloc[-1]).date()
+            ),
             direction="decrease",
             baseline_value=earliest_rate,
             current_value=latest_rate,
@@ -172,7 +199,8 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
                 "cohorts_with_zero_repeat": int(len(zero_cohorts)),
                 "earliest_cohort_repeat_rate": round(earliest_rate, 4),
                 "latest_cohort_repeat_rate": round(latest_rate, 4),
-                "share_of_2025_repeats_from_first_3_cohorts": round(early_share, 4),
+                "share_of_recent_repeats_from_earliest_cohorts": round(early_share, 4),
+                "recent_repeats_measured_from": str(recent_from),
                 "brand_repeat_share_mean_over_suspect_window": round(float(np.mean(shares)), 4),
                 "brand_repeat_share_coefficient_of_variation": round(flatness, 4),
                 "suspect_window_months": int(shares.size),

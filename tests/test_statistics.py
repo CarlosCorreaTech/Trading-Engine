@@ -16,6 +16,7 @@ from src.config import DETECTION
 from src.detection.statistics import (
     compare_periods,
     cusum_changepoint,
+    cusum_changepoint_span,
     deseasonalise,
     robust_zscore,
     seasonal_factors,
@@ -99,6 +100,41 @@ class TestCusumChangepoint:
     def test_returns_none_for_zero_variance_baseline(self):
         series = np.concatenate([np.full(60, 5.0), np.full(60, 9.0)])
         assert _cusum(series) is None
+
+
+class TestCusumSpan:
+    def _span(self, series, baseline_window: int = 60):
+        return cusum_changepoint_span(series, baseline_window, drift=DRIFT, threshold=THRESHOLD)
+
+    def test_origin_lands_on_the_true_changepoint(self):
+        """The reason the span exists: the detection index lags the change by
+        however long the evidence took to accumulate, and a baseline drawn up
+        to the detection index would include post-change days. The origin
+        should sit at, or within noise of, where the shift actually happened."""
+        span = self._span(_with_changepoint(at=120))
+        assert span is not None
+        origin, detection = span
+        assert origin <= detection
+        assert 115 <= origin <= 123, "origin should be at the true change, not the alarm"
+        assert detection - origin >= 1, "a sustained shift takes more than one point to prove"
+
+    def test_origin_agrees_with_detection_only_view(self):
+        series = _with_changepoint(at=120)
+        span = self._span(series)
+        assert span is not None and span[1] == _cusum(series)
+
+    def test_origin_ignores_an_earlier_reverted_wobble(self):
+        """A brief excursion that fully reverts resets the accumulating run, so
+        it must not be blamed as the origin of a later genuine shift."""
+        series = _with_changepoint(n=260, at=180)
+        series[100:104] *= 1.2  # a wobble that reverts long before the shift
+        span = self._span(series)
+        assert span is not None
+        origin, _ = span
+        assert origin >= 170, f"origin {origin} was pulled back to the reverted wobble"
+
+    def test_none_when_nothing_shifts(self):
+        assert self._span(_stationary()) is None
 
 
 class TestCusumAccuracy:

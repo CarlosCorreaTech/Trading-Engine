@@ -14,11 +14,11 @@ from dataclasses import replace
 import numpy as np
 import pandas as pd
 
-from src.config import DETECTION
+from src.config import ANALYSIS_END, DETECTION
 from src.detection.signal import Classification, Signal, SignalType
 from src.detection.statistics import (
     compare_periods,
-    cusum_changepoint,
+    cusum_changepoint_span,
     deseasonalise,
     sustained_breach,
     trailing_consecutive_run,
@@ -60,7 +60,7 @@ def detect_cpc_inflation(con, quality: dict[str, float]) -> list[Signal]:
         """
         SELECT date_day, channel, cpc, cpc_ma7, spend, clicks
         FROM semantic.channel_daily_performance
-        WHERE channel IN ('Meta', 'Google') AND spend IS NOT NULL AND clicks > 0
+        WHERE spend IS NOT NULL AND clicks > 0  -- paid channels are the ones with spend
         ORDER BY channel, date_day
         """,
     )
@@ -73,16 +73,22 @@ def detect_cpc_inflation(con, quality: dict[str, float]) -> list[Signal]:
             continue
 
         adjusted = deseasonalise(group["date_day"], group["cpc"])
-        changepoint = cusum_changepoint(
+        span = cusum_changepoint_span(
             adjusted,
             baseline_window=window,
             drift=DETECTION["cusum_drift"],
             threshold=DETECTION["cusum_threshold"],
         )
-        if changepoint is None:
+        if span is None:
             continue
 
-        baseline = group["cpc"].iloc[:changepoint]
+        # Baseline runs to the change's origin, not to the detection point.
+        # CUSUM confirms a shift only after the evidence accumulates, so the
+        # days between origin and alarm are already post-change; leaving them
+        # in the baseline would drag it toward the new level and understate
+        # the very movement being reported.
+        origin, _ = span
+        baseline = group["cpc"].iloc[:origin]
         recent = group["cpc"].iloc[-window:]
         magnitude, p_value = compare_periods(baseline, recent)
         if magnitude < DETECTION["cpc_inflation_pct"]:
@@ -106,7 +112,7 @@ def detect_cpc_inflation(con, quality: dict[str, float]) -> list[Signal]:
                 entity=channel,
                 metric="cpc",
                 metric_family="channel_efficiency",
-                detected_at=started or pd.to_datetime(group["date_day"].iloc[changepoint]).date(),
+                detected_at=started or pd.to_datetime(group["date_day"].iloc[origin]).date(),
                 direction="increase",
                 baseline_value=baseline_median,
                 current_value=current,
@@ -123,7 +129,7 @@ def detect_cpc_inflation(con, quality: dict[str, float]) -> list[Signal]:
                 evidence={
                     "baseline_cpc": round(baseline_median, 4),
                     "current_cpc": round(current, 4),
-                    "changepoint_date": str(pd.to_datetime(group["date_day"].iloc[changepoint]).date()),
+                    "changepoint_date": str(pd.to_datetime(group["date_day"].iloc[origin]).date()),
                     "recent_spend_28d": round(float(group["spend"].iloc[-window:].sum()), 2),
                     "recent_clicks_28d": int(group["clicks"].iloc[-window:].sum()),
                     "clicks_lost_vs_baseline": int(
@@ -160,7 +166,7 @@ def detect_payback_breach(con, quality: dict[str, float]) -> list[Signal]:
         SELECT date_day, channel, payback_ratio_7d, cac_attributed_7d,
                cac_with_unattributed_7d, spend, new_customers
         FROM semantic.channel_daily_performance
-        WHERE channel IN ('Meta', 'Google') AND spend IS NOT NULL
+        WHERE spend IS NOT NULL  -- paid channels are the ones with spend
         ORDER BY channel, date_day
         """,
     )
@@ -269,16 +275,20 @@ def detect_product_velocity_change(con, quality: dict[str, float]) -> list[Signa
             continue
 
         adjusted = deseasonalise(group["date_day"], group["unit_share"])
-        changepoint = cusum_changepoint(
+        span = cusum_changepoint_span(
             adjusted,
             baseline_window=window * 2,
             drift=DETECTION["cusum_drift"],
             threshold=DETECTION["cusum_threshold"],
         )
-        if changepoint is None:
+        if span is None:
             continue
 
-        baseline = group["units"].iloc[:changepoint]
+        # As with CPC: the baseline stops at the change's origin so the ramp-up
+        # days between origin and alarm do not contaminate it, and the reported
+        # start date is when the shift began rather than when it was proved.
+        origin, _ = span
+        baseline = group["units"].iloc[:origin]
         recent = group["units"].iloc[-window * 2:]
         magnitude, p_value = compare_periods(baseline, recent)
         if abs(magnitude) < DETECTION["velocity_change_pct"]:
@@ -287,7 +297,7 @@ def detect_product_velocity_change(con, quality: dict[str, float]) -> list[Signa
         baseline_daily = float(baseline.mean())
         current_daily = float(recent.mean())
         direction = "increase" if magnitude > 0 else "decrease"
-        changepoint_date = pd.to_datetime(group["date_day"].iloc[changepoint]).date()
+        changepoint_date = pd.to_datetime(group["date_day"].iloc[origin]).date()
 
         signals.append(
             Signal(
@@ -302,7 +312,7 @@ def detect_product_velocity_change(con, quality: dict[str, float]) -> list[Signa
                 baseline_value=baseline_daily,
                 current_value=current_daily,
                 magnitude=magnitude,
-                persistence_days=int(len(group) - changepoint),
+                persistence_days=int(len(group) - origin),
                 p_value=p_value,
                 data_quality_score=dq,
                 summary=(
@@ -315,7 +325,7 @@ def detect_product_velocity_change(con, quality: dict[str, float]) -> list[Signa
                     "variant_label": group["variant_label"].iloc[0],
                     "baseline_units_per_day": round(baseline_daily, 2),
                     "current_units_per_day": round(current_daily, 2),
-                    "baseline_unit_share": round(float(group["unit_share"].iloc[:changepoint].mean()), 4),
+                    "baseline_unit_share": round(float(group["unit_share"].iloc[:origin].mean()), 4),
                     "current_unit_share": round(float(group["unit_share"].iloc[-window * 2:].mean()), 4),
                     "unit_margin": float(group["unit_margin"].iloc[0]),
                     "price_ex_vat": float(group["price_ex_vat"].iloc[0]),
@@ -334,18 +344,22 @@ def detect_inventory_risk(con, quality: dict[str, float]) -> list[Signal]:
     """
     frame = query(
         con,
-        f"""
+        """
         SELECT sku, variant_label, inventory_snapshot, units_ma28, days_of_cover,
                price_ex_vat, unit_margin, unit_cost
         FROM semantic.product_velocity
         WHERE is_current_snapshot
           AND days_of_cover IS NOT NULL
-          AND days_of_cover < {DETECTION['inventory_cover_days_critical']}
+          AND days_of_cover < ?
         ORDER BY days_of_cover
         """,
+        params=[DETECTION["inventory_cover_days_critical"]],
     )
     dq = quality.get("product_velocity", 1.0)
     signals: list[Signal] = []
+    # The snapshot is "as of now", and now for this dataset is the end of the
+    # analysis window rather than the wall clock.
+    snapshot_date = dt.date.fromisoformat(ANALYSIS_END)
 
     for row in frame.itertuples(index=False):
         cover = float(row.days_of_cover)
@@ -358,7 +372,7 @@ def detect_inventory_risk(con, quality: dict[str, float]) -> list[Signal]:
                 entity=row.sku,
                 metric="days_of_cover",
                 metric_family="product_velocity",
-                detected_at=dt.date(2025, 6, 30),
+                detected_at=snapshot_date,
                 direction="decrease",
                 baseline_value=float(DETECTION["inventory_cover_days_critical"]),
                 current_value=cover,
@@ -523,18 +537,27 @@ def detect_email_engagement_divergence(con, quality: dict[str, float]) -> list[S
         open_rate = np.where(
             group["recipients"] > 0, group["opens"] / group["recipients"], np.nan
         )
-        changepoint = cusum_changepoint(
+        span = cusum_changepoint_span(
             deseasonalise(group["date_day"], pd.Series(open_rate)),
             baseline_window=max(8, len(group) // 4),
             drift=DETECTION["cusum_drift"],
             threshold=DETECTION["cusum_threshold"],
         )
-        if changepoint is None:
+        if span is None:
             continue
 
-        early, late = group.iloc[:changepoint], group.iloc[changepoint:]
+        # Split with a guard band. The decline here is gradual rather than a
+        # step: the CUSUM's origin marks where engagement started slipping and
+        # its alarm marks where the evidence became conclusive, and the weeks
+        # in between are transitional. Ending the baseline at the origin keeps
+        # pre-change weeks pure; starting the "after" block at the alarm keeps
+        # it to weeks that are certainly in the new regime. Including the
+        # transition in either block dilutes the very contrast being measured.
+        origin, detection = span
+        early, late = group.iloc[:origin], group.iloc[detection:]
         if len(early) < 5 or len(late) < 5:
             continue
+        onset_date = pd.to_datetime(group["date_day"].iloc[origin]).date()
 
         def rate(block: pd.DataFrame, numerator: str) -> float:
             recipients = block["recipients"].sum()
@@ -603,18 +626,20 @@ def detect_email_engagement_divergence(con, quality: dict[str, float]) -> list[S
                 entity=flow,
                 metric="open_rate",
                 metric_family="email_engagement",
-                detected_at=pd.to_datetime(late["date_day"].iloc[0]).date(),
+                detected_at=onset_date,
                 direction="decrease",
                 baseline_value=open_early,
                 current_value=open_late,
                 magnitude=open_change,
                 persistence_days=int(
-                    (pd.to_datetime(late["date_day"].iloc[-1]) - pd.to_datetime(late["date_day"].iloc[0])).days
+                    (pd.to_datetime(group["date_day"].iloc[-1]) - pd.Timestamp(onset_date)).days
                 ),
                 p_value=None,
                 data_quality_score=dq,
                 summary=summary,
                 evidence={
+                    "onset_date": str(onset_date),
+                    "confirmed_date": str(pd.to_datetime(group["date_day"].iloc[detection]).date()),
                     "open_rate_change": round(open_change, 4),
                     "click_rate_change": round(click_change, 4),
                     "order_rate_change": round(order_change, 4),
@@ -682,6 +707,7 @@ def _consolidate_email_signals(signals: list[Signal], dq: float) -> list[Signal]
         evidence={
             "flows_affected": affected,
             "flow_count": len(divergences),
+            "flow_onsets": {s.entity: str(s.detected_at) for s in divergences},
             "mean_open_rate_change": round(mean_open, 4),
             "mean_click_rate_change": round(mean_click, 4),
             "mean_order_rate_change": round(mean_order, 4),

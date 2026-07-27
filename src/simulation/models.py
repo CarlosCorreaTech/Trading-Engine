@@ -73,14 +73,15 @@ def simulate_budget_reallocation(
 
     daily = query(
         con,
-        f"""
+        """
         SELECT channel, date_day, cac_attributed_7d, cac_with_unattributed_7d,
                new_customer_gross_profit, new_customers
         FROM semantic.channel_daily_performance
-        WHERE channel IN ('Meta', 'Google')
-          AND date_day > (SELECT max(date_day) - {lookback} FROM semantic.channel_daily_performance)
+        WHERE channel IN (?, ?)
+          AND date_day > (SELECT max(date_day) - ? FROM semantic.channel_daily_performance)
         ORDER BY channel, date_day
         """,
+        params=[params["source_channel"], params["destination_channel"], lookback],
     )
     source = daily[daily["channel"] == params["source_channel"]]
     destination = daily[daily["channel"] == params["destination_channel"]]
@@ -235,17 +236,17 @@ def simulate_inventory_purchase(
     horizon = INVENTORY_HORIZON_DAYS
 
     skus = [line["sku"] for line in params["lines"]]
-    placeholders = ", ".join(f"'{sku}'" for sku in skus)
     history = query(
         con,
-        f"""
+        """
         SELECT sku, date_day, units
         FROM semantic.product_velocity
-        WHERE sku IN ({placeholders})
-          AND date_day > (SELECT max(date_day) - {SIMULATION['bootstrap_window_days']}
+        WHERE sku IN (SELECT unnest(?))
+          AND date_day > (SELECT max(date_day) - ?
                           FROM semantic.product_velocity)
         ORDER BY sku, date_day
         """,
+        params=[skus, SIMULATION["bootstrap_window_days"]],
     )
 
     lead_time = draw_lead_time(rules["assumed_supplier_lead_time_days"], n, rng)
@@ -323,6 +324,17 @@ def simulate_inventory_purchase(
 
         # Oversupply risk: whatever is still unsold at the end of the horizon
         # was bought too early, and for supplements it ages toward expiry.
+        #
+        # Two carrying-cost asymmetries here are deliberate, and both lean
+        # against the recommendation. First, the late arm's holding costs are
+        # not modelled at all, which flatters the alternative the order is
+        # judged against. Second, leftover units are charged for the full
+        # horizon on top of the days_held_earlier charge above, so the slice
+        # of stock most likely to represent a sizing mistake is charged twice
+        # rather than netted. The margin rescued dwarfs both terms in every
+        # scenario worth acting on, so the conservatism costs little, and an
+        # order that only looks profitable when its carrying costs are
+        # measured generously is not one the engine should be auto-approving.
         sold_by_horizon = np.minimum(total_demand - lost_ordering_now, on_hand + ordered)
         leftover = np.maximum(0.0, on_hand + ordered - sold_by_horizon)
         oversupply_cost = leftover * unit_cost * INVENTORY_HOLDING_COST_ANNUAL * (horizon / 365.0)
@@ -346,6 +358,10 @@ def simulate_inventory_purchase(
             "demand_source": f"Block bootstrap of the last "
                              f"{SIMULATION['bootstrap_window_days']} days of actual sales",
             "stockout_behaviour": "Demand arising while out of stock is lost, not deferred",
+            "carrying_cost_treatment": "Deliberately one-sided against the order: the "
+                                       "late-ordering arm's holding costs are not credited, "
+                                       "and leftover stock is charged both for arriving "
+                                       "early and for sitting unsold at the horizon",
             "counterfactual": "Ordering now versus ordering once the shelf is empty. "
                               "Comparing against never reordering would credit the order "
                               "with sales it would have made anyway",

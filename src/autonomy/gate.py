@@ -532,9 +532,24 @@ def evaluate(
     )
 
 
-def evaluate_all(
+@dataclass(frozen=True)
+class EvaluatedCase:
+    """One recommendation with the simulations that informed its routing.
+
+    The gate's verdict is only as reviewable as the evidence it was reached
+    on, so callers that present decisions (the console, the notebook) need the
+    simulation results alongside them, not a re-run that might differ.
+    """
+
+    recommendation: Recommendation
+    nominal: SimulationResult | None
+    stressed: SimulationResult | None
+    decision: GateDecision
+
+
+def evaluate_with_simulations(
     recommendations: list[Recommendation], con, seed: int | None = None
-) -> dict[str, GateDecision]:
+) -> list[EvaluatedCase]:
     """Route every recommendation, running each cash model twice.
 
     The second run is the stressed one. It shares the first's seed, so the two
@@ -542,14 +557,29 @@ def evaluate_all(
     attributable rather than coincidental.
     """
     scale = BusinessScale.from_warehouse(con)
-    decisions: dict[str, GateDecision] = {}
+    cases: list[EvaluatedCase] = []
     for recommendation in recommendations:
         nominal = simulate(recommendation, con, seed)
         stressed = simulate(recommendation, con, seed, stress=True) if nominal else None
-        decisions[recommendation.recommendation_id] = evaluate(
-            recommendation, nominal, stressed, scale
+        cases.append(
+            EvaluatedCase(
+                recommendation=recommendation,
+                nominal=nominal,
+                stressed=stressed,
+                decision=evaluate(recommendation, nominal, stressed, scale),
+            )
         )
-    return decisions
+    return cases
+
+
+def evaluate_all(
+    recommendations: list[Recommendation], con, seed: int | None = None
+) -> dict[str, GateDecision]:
+    """As `evaluate_with_simulations`, keeping only the verdicts."""
+    return {
+        case.recommendation.recommendation_id: case.decision
+        for case in evaluate_with_simulations(recommendations, con, seed)
+    }
 
 
 def decisions_to_frame(decisions: dict[str, GateDecision]) -> pd.DataFrame:

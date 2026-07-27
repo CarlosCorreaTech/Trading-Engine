@@ -20,13 +20,13 @@ from typing import Any
 
 import numpy as np
 
-from src.autonomy.gate import BusinessScale, GateDecision, Verdict, evaluate
+from src.autonomy.gate import BusinessScale, GateDecision, Verdict, evaluate_with_simulations
 from src.config import AUTONOMY_GATE, SIMULATION
 from src.detection.runner import detect_all
 from src.detection.signal import Signal
 from src.recommendations.engine import recommend
 from src.recommendations.recommendation import Recommendation
-from src.simulation import NOT_SIMULATED_REASON, simulate
+from src.simulation import NOT_SIMULATED_REASON
 from src.simulation.outcome import SimulationResult
 from src.warehouse import connect, query
 
@@ -254,24 +254,14 @@ def _build() -> Bundle:
         signals = detect_all(con)
         recommendations = recommend(signals, con)
         scale = BusinessScale.from_warehouse(con)
-
-        nominal: dict[str, SimulationResult] = {}
-        stressed: dict[str, SimulationResult] = {}
-        serialised: list[dict[str, Any]] = []
         signals_by_id = {s.signal_id: s for s in signals}
 
-        for recommendation in recommendations:
-            rec_id = recommendation.recommendation_id
-            base = simulate(recommendation, con)
-            stress = simulate(recommendation, con, stress=True) if base else None
-            if base is not None:
-                nominal[rec_id] = base
-            if stress is not None:
-                stressed[rec_id] = stress
-            decision = evaluate(recommendation, base, stress, scale)
-            serialised.append(
-                _serialise_decision(recommendation, decision, base, stress, signals_by_id)
+        serialised = [
+            _serialise_decision(
+                case.recommendation, case.decision, case.nominal, case.stressed, signals_by_id
             )
+            for case in evaluate_with_simulations(recommendations, con)
+        ]
 
         return Bundle(
             overview=_overview(con, scale, serialised, signals),

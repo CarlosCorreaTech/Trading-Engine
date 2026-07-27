@@ -61,6 +61,25 @@ def cusum_changepoint(
 ) -> int | None:
     """Locate the first sustained level shift using a two-sided CUSUM.
 
+    Returns the *detection* index, which lags the change itself by however many
+    observations the evidence took to accumulate. Callers that need the change's
+    origin, which is most of them, should use ``cusum_changepoint_span``: using
+    the detection index as a before/after boundary quietly counts the first
+    post-change days as "before", inflating the baseline with exactly the values
+    it is supposed to exclude.
+    """
+    span = cusum_changepoint_span(values, baseline_window, drift, threshold)
+    return None if span is None else span[1]
+
+
+def cusum_changepoint_span(
+    values: np.ndarray | pd.Series,
+    baseline_window: int,
+    drift: float = 0.5,
+    threshold: float = 5.0,
+) -> tuple[int, int] | None:
+    """Locate the first sustained level shift, as (origin, detection) indices.
+
     CUSUM accumulates small deviations from a baseline mean, so it fires on a
     persistent modest shift that a per-point threshold would never catch, while
     ignoring a single large spike that reverts. That is the right tradeoff
@@ -71,9 +90,11 @@ def cusum_changepoint(
     deviations, subtracted before accumulating. It is what stops random noise
     accumulating into an alarm given enough time.
 
-    Returns the index where the cumulative sum first breaches ``threshold``, or
-    None if the series never shifts. The index is the detection point; callers
-    that want the change's origin should look back over the accumulating run.
+    ``origin`` is where the breaching side's statistic last left zero, which is
+    the standard changepoint estimate for a CUSUM: the accumulating run that
+    ended in the alarm began there, so it is the best available date for when
+    the shift started. ``detection`` is where the threshold was crossed.
+    Returns None if the series never shifts.
     """
     arr = np.asarray(values, dtype=float)
     if arr.size <= baseline_window:
@@ -90,6 +111,7 @@ def cusum_changepoint(
         return None
 
     upper = lower = 0.0
+    upper_start = lower_start = None
     for i in range(baseline_window, arr.size):
         if not np.isfinite(arr[i]):
             continue
@@ -99,10 +121,23 @@ def cusum_changepoint(
         # that reverts is not a level shift. Clipping forces the alarm to be
         # earned by several consecutive observations.
         standardised = float(np.clip((arr[i] - mean) / sigma, -_CUSUM_CLIP, _CUSUM_CLIP))
+
         upper = max(0.0, upper + standardised - drift)
+        if upper == 0.0:
+            upper_start = None
+        elif upper_start is None:
+            upper_start = i
+
         lower = min(0.0, lower + standardised + drift)
-        if upper > threshold or lower < -threshold:
-            return i
+        if lower == 0.0:
+            lower_start = None
+        elif lower_start is None:
+            lower_start = i
+
+        if upper > threshold:
+            return (upper_start if upper_start is not None else i), i
+        if lower < -threshold:
+            return (lower_start if lower_start is not None else i), i
     return None
 
 
@@ -196,13 +231,13 @@ def seasonal_factors(dates: pd.Series, values: pd.Series) -> pd.Series:
     return by_dow.replace(0, np.nan).fillna(1.0)
 
 
-def deseasonalise(dates: pd.Series, values: pd.Series) -> pd.Series:
+def deseasonalise(dates: pd.Series, values: pd.Series) -> np.ndarray:
     """Divide out the weekly pattern so level shifts stand out."""
     factors = seasonal_factors(dates, values)
     if factors.empty:
-        return pd.Series(values).astype(float)
+        return np.asarray(values, dtype=float)
     dow = pd.to_datetime(dates).dt.dayofweek
-    return pd.Series(values).astype(float).values / dow.map(factors).fillna(1.0).values
+    return np.asarray(values, dtype=float) / dow.map(factors).fillna(1.0).to_numpy()
 
 
 def compare_periods(before: np.ndarray | pd.Series, after: np.ndarray | pd.Series) -> tuple[float, float]:
