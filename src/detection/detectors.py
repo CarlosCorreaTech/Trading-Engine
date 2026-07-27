@@ -364,7 +364,14 @@ def detect_inventory_risk(con, quality: dict[str, float]) -> list[Signal]:
                 current_value=cover,
                 magnitude=(cover - DETECTION["inventory_cover_days_critical"])
                 / DETECTION["inventory_cover_days_critical"],
-                persistence_days=1,
+                # Persistence normally means "how long has this been true", but
+                # stock level is a single snapshot with no history, so that
+                # question has no answer here. What persistence is standing in
+                # for downstream is how much evidence sits behind the estimate,
+                # and the cover figure rests on the 28-day trailing velocity.
+                # Reporting 1 would score this as a one-day blip and penalise a
+                # well-evidenced projection for the source's lack of history.
+                persistence_days=DETECTION["baseline_window_days"],
                 p_value=None,
                 data_quality_score=dq,
                 summary=(

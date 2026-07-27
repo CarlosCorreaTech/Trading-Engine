@@ -93,22 +93,75 @@ DETECTION = {
 
 
 # --- Confidence scoring -------------------------------------------------
-# Confidence is an explicit weighted blend of four factors rather than an
-# opaque number. Weights sum to 1.0.
+# Confidence combines four factors, but not all four the same way.
 #
-#   strength      how large the move is relative to historical variance
+# Three describe how strong the evidence is, and are averaged with these
+# weights (which sum to 1.0):
+#
+#   strength      how large the move is relative to normal variation
 #   persistence   how long it has held
-#   data_quality  how much we trust the inputs behind it
-#   corroboration whether independent metrics tell the same story
+#   corroboration whether independent checks agree
 #
-# data_quality carries the joint-highest weight on purpose: a huge, persistent,
-# well-corroborated move built on broken data is still a bad reason to spend
-# money. It is the factor most likely to be wrong in a real pipeline.
+# The fourth, data quality, multiplies that average rather than joining it.
+#
+# The distinction matters. Averaging would let a huge, persistent,
+# well-corroborated signal built on broken data still score around 0.7, because
+# three strong terms outvote one weak one. But those three terms are all
+# computed *from* the suspect data, so they are not independent evidence, they
+# are the same doubt counted three more times. Multiplying makes data quality a
+# ceiling: nothing measured on unusable data can be acted on confidently,
+# regardless of how convincing it looks.
+#
+# This is what mechanically prevents a retention recommendation on this dataset,
+# where the retention collapse is enormous, perfectly persistent, and entirely
+# fictional.
 CONFIDENCE_WEIGHTS = {
-    "strength": 0.30,
-    "persistence": 0.20,
-    "data_quality": 0.30,
-    "corroboration": 0.20,
+    "strength": 0.40,
+    "persistence": 0.25,
+    "corroboration": 0.35,
+}
+
+# A signal must move at least this much to score full marks on strength. Set at
+# 50% because a move of that size in a channel cost or a product's velocity is
+# unambiguously a regime change rather than drift.
+CONFIDENCE_STRENGTH_SATURATION = 0.50
+
+# Days a signal must hold to score full marks on persistence. Four weeks covers
+# a full monthly cycle, so a signal surviving it is not a calendar effect.
+CONFIDENCE_PERSISTENCE_SATURATION_DAYS = 28
+
+
+# --- Recommendation rules -----------------------------------------------
+# The commercial judgement, kept declarative so it can be argued with without
+# reading Python.
+RECOMMENDATION_RULES = {
+    "budget_reallocation": {
+        # Never move more than this share of a channel's budget at once. Paid
+        # channels do not respond linearly and a large step destroys the ability
+        # to attribute the outcome. Several small moves beat one big one.
+        "max_shift_pct_of_source": 0.30,
+        # The destination must be demonstrably healthy, not merely healthier
+        # than the channel being cut.
+        "min_destination_payback": 1.5,
+        # Headroom is capped by the most the destination has actually absorbed
+        # while staying healthy, rather than assumed to scale indefinitely.
+        # If that evidence comes from November or December, it is discounted:
+        # Google absorbed 12k in December at stable CPA, but December demand
+        # flatters everything, and assuming June behaves like Christmas is how
+        # reallocations disappoint.
+        "peak_season_headroom_haircut": 0.50,
+    },
+    "inventory_reorder": {
+        # No supplier lead time is given in the dataset. 30 days is a
+        # deliberately conservative placeholder for imported supplements and is
+        # flagged as an assumption on every recommendation it affects, because
+        # it directly sets the reorder quantity.
+        "assumed_supplier_lead_time_days": 30,
+        "safety_stock_days": 14,
+        # Order enough to cover this long after delivery. A quarter balances
+        # holding cost against reorder frequency.
+        "target_cover_days": 90,
+    },
 }
 
 
