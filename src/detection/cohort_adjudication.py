@@ -81,6 +81,14 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
     # --- Test 3: is the brand-level repeat share flat while cohorts go to zero?
     # These two facts are mutually contradictory. If genuinely no new customer
     # ever returns, the repeat share must fall as older cohorts are exhausted.
+    #
+    # Measured only from the first zero-repeat cohort onward. A brand's opening
+    # months necessarily show a rising repeat share, because in month one there
+    # is nobody who could yet be returning, and including that ramp inflates the
+    # variation enough to hide a genuinely flat period afterwards. It did
+    # exactly that here: over the full year the coefficient of variation is
+    # 0.29 and the test fails, over the period actually under suspicion it is
+    # near zero. The ramp is not evidence about the months in question.
     monthly = query(
         con,
         """
@@ -90,7 +98,12 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
         GROUP BY 1 ORDER BY 1
         """,
     )
-    shares = monthly["repeat_share"].dropna().to_numpy()
+    if not zero_cohorts.empty:
+        suspect_from = zero_cohorts["cohort_month"].min()
+        window = monthly[monthly["month_start"] >= suspect_from]
+    else:
+        window = monthly
+    shares = window["repeat_share"].dropna().to_numpy()
     flatness = float(np.std(shares) / np.mean(shares)) if shares.size and np.mean(shares) else 1.0
 
     # --- Does the mechanical null model explain the decay? -------------------
@@ -121,10 +134,11 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
             f"{len(zero_cohorts)} fully mature cohorts show a 90-day repeat rate of "
             f"effectively zero, which no real cohort of this size produces; "
             f"{early_share:.0%} of all 2025 repeat orders come from customers acquired in "
-            f"the first three months; and the brand's overall repeat order share is flat "
-            f"at roughly {np.mean(shares):.0%} across the whole year. The last two cannot "
-            f"both be true of a real business, because if no new customer ever returned "
-            f"the repeat share would have to fall as the early cohorts were used up. "
+            f"the first three months; and across exactly the months those dead cohorts "
+            f"cover, the brand's overall repeat order share holds flat at roughly "
+            f"{np.mean(shares):.0%} of orders. The last two cannot both be true of a real "
+            f"business, because if no new customer ever returned the repeat share would "
+            f"have to fall as the early cohorts were used up. "
             f"The practical consequence is that lifetime value cannot be measured on this "
             f"data, so unit economics fall back to first-order contribution margin."
         )
@@ -159,8 +173,9 @@ def adjudicate_cohort_retention(con, quality: dict[str, float]) -> list[Signal]:
                 "earliest_cohort_repeat_rate": round(earliest_rate, 4),
                 "latest_cohort_repeat_rate": round(latest_rate, 4),
                 "share_of_2025_repeats_from_first_3_cohorts": round(early_share, 4),
-                "brand_repeat_share_mean": round(float(np.mean(shares)), 4),
+                "brand_repeat_share_mean_over_suspect_window": round(float(np.mean(shares)), 4),
                 "brand_repeat_share_coefficient_of_variation": round(flatness, 4),
+                "suspect_window_months": int(shares.size),
                 "correlation_with_uniform_draw_model": (
                     None if np.isnan(uniform_correlation) else round(uniform_correlation, 4)
                 ),

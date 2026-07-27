@@ -307,6 +307,18 @@ def _cash_checks(
     )
     step_cap = scale.monthly_paid_spend * AUTONOMY_GATE["max_autonomous_step_pct_of_paid_spend"]
 
+    # Only inventory has stock to be left holding, so only inventory should be
+    # told about it. A budget move that reported "cash tied up in stock the
+    # stressed demand never sold" would be describing something that does not
+    # exist in it.
+    stuck_capital = float(stressed.assumptions.get("capital_unsold_at_horizon_p95", 0.0))
+    at_risk_composition = (
+        "money lost outright plus cash still tied up in stock the stressed demand "
+        "never sold"
+        if stuck_capital > 0
+        else "profit forgone in the worst 5% of outcomes"
+    )
+
     checks = [
         GateCheck(
             name="confidence_meets_bar",
@@ -345,8 +357,7 @@ def _cash_checks(
             passed=worst_case <= loss_tolerance,
             detail=(
                 f"With its key assumptions set against it, GBP {worst_case:,.0f} is at "
-                f"risk: money lost outright plus cash still tied up in stock the stressed "
-                f"demand never sold"
+                f"risk ({at_risk_composition})"
                 + (f", or {worst_case / exposure:.0%} of the amount committed" if exposure else "")
                 + f". Tolerance is GBP {loss_tolerance:,.0f}, being "
                 f"{AUTONOMY_GATE['max_stressed_loss_pct_of_monthly_gross_profit']:.0%} of "
