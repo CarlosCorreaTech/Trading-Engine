@@ -90,6 +90,16 @@ class GateCheck:
     is non-blocking because it changes how much the engine may do rather than
     whether it may act at all."""
 
+    routing: bool = False
+    """Whether this test decides which lane the decision goes down rather than
+    how good the case for it is.
+
+    The reversibility test blocks autonomous action and always fails for a
+    purchase order, so treating it as evidence against the recommendation would
+    mark every purchase order as contested and lose the distinction between the
+    one that deserves an argument and the two that deserve a signature. It is a
+    fact about the action, not a mark against it."""
+
 
 @dataclass(frozen=True)
 class GateDecision:
@@ -127,15 +137,10 @@ class GateDecision:
         this, the one that deserves an argument looks exactly like the two that
         deserve a signature.
 
-        Reversibility is excluded, because it decides the verdict rather than
-        describing the strength of the case. Every purchase order fails it, so
-        counting it here would mark all of them as contested and lose the
-        distinction this exists to draw.
+        Routing checks are excluded: they decide the verdict rather than
+        describing the strength of the case.
         """
-        return any(
-            c.blocking and not c.passed and c.name != "action_is_reversible"
-            for c in self.checks
-        )
+        return any(c.blocking and not c.passed and not c.routing for c in self.checks)
 
     def to_row(self) -> dict:
         return {
@@ -400,6 +405,7 @@ def _cash_checks(
         GateCheck(
             name="action_is_reversible",
             passed=bool(bar["auto_execute_allowed"]),
+            routing=True,
             detail=(
                 "Reversible within a day, and the damage stops when the move is unwound."
                 if bar["auto_execute_allowed"]
@@ -451,7 +457,7 @@ def evaluate(
 
     if recommendation.reversibility is Reversibility.IRREVERSIBLE:
         verdict = Verdict.PROPOSE
-        contested = [c for c in blocked if c.name != "action_is_reversible"]
+        contested = [c for c in blocked if not c.routing]
         if contested:
             headline = (
                 f"For approval, and worth arguing about. Committing GBP "

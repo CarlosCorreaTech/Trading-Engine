@@ -1,0 +1,37 @@
+# Two ways into the same image.
+#
+#   docker compose up console                 the demo console on :8000
+#   docker compose --profile notebook up      the walkthrough on :8888
+#
+# The notebook lives behind a profile so the default `up` starts one thing.
+
+services:
+  console:
+    build: .
+    image: trading-engine
+    container_name: trading-engine-console
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  notebook:
+    build: .
+    image: trading-engine
+    container_name: trading-engine-notebook
+    profiles: [notebook]
+    ports:
+      - "8888:8888"
+    command: >
+      jupyter lab --ip=0.0.0.0 --port=8888 --no-browser
+      --IdentityProvider.token=''
+      --ServerApp.root_dir=/app
+    # Token auth is off because this binds to the host loopback for a local
+    # demo. It is not a configuration to copy anywhere real.
+
+  # Runs the detector and gate tests against the warehouse baked into the image,
+  # then exits. `docker compose run --rm tests`
+  tests:
+    build: .
+    image: trading-engine
+    profiles: [tests]
+    command: ["pytest", "-q"]

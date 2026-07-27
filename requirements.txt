@@ -8,5 +8,11 @@ matplotlib==3.11.1
 # Notebook walkthrough
 jupyter==1.1.1
 
+# Demo console. The UI is plain HTML, CSS and JavaScript served as static files,
+# so there is no Node toolchain, no bundler and nothing fetched from a CDN at
+# runtime. The container works with no network access.
+fastapi==0.140.7
+uvicorn[standard]==0.51.0
+
 # Detector test suite
 pytest==9.1.1

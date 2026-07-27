@@ -1,0 +1,30 @@
+# Keep the build context to source and data. Everything excluded here is either
+# rebuilt inside the image, irrelevant to it, or must not be in it at all.
+
+.git/
+.gitignore
+.venv/
+venv/
+env/
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Built by the image, and a host copy would be the wrong architecture's file
+# shadowing the one the build just made.
+warehouse.duckdb
+*.duckdb.wal
+
+# Confidential source material. Excluded from the repository and from the image.
+*.pdf
+
+_shots/
+_tmp*.py
+*.md
+!README.md
+
+Dockerfile
+.dockerignore
+docker-compose.yml

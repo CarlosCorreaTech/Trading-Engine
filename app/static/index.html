@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trading Engine — decision console</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230d1117'/><path d='M7 21l5-7 4 4 4-8 5 6' stroke='%233fb950' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"></span>
+    <div>
+      <h1>Trading Engine</h1>
+      <p class="sub" id="window">&nbsp;</p>
+    </div>
+  </div>
+
+  <dl class="headline" id="headline"></dl>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab is-active" role="tab" data-view="decisions">Decisions</button>
+    <button class="tab" role="tab" data-view="signals">Signals</button>
+    <button class="tab" role="tab" data-view="quality">Data quality</button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="view is-active" id="view-decisions">
+    <aside class="queue" aria-label="Decision queue">
+      <div id="queue"></div>
+    </aside>
+    <article class="detail" id="detail" tabindex="-1"></article>
+  </section>
+
+  <section class="view" id="view-signals">
+    <div class="scroller">
+      <div class="pane-intro">
+        <h2>What the engine noticed</h2>
+        <p>
+          Every detected change is labelled with what <em>kind</em> of thing moved.
+          Only one of the four kinds is actionable as stated, and the classification
+          is what routes a measurement fault to engineering instead of to marketing.
+        </p>
+      </div>
+      <div id="signals"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-quality">
+    <div class="scroller">
+      <div class="pane-intro">
+        <h2>What is wrong with the data</h2>
+        <p>
+          These checks run as part of the build. Errors stop it. Known issues are
+          failures that were investigated and are expected to fail permanently; they
+          do not stop the build, they change what the affected metrics may be used
+          for. The score each metric family earns here becomes a ceiling on the
+          confidence of any recommendation built on it.
+        </p>
+      </div>
+      <div id="quality"></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="boot" id="boot">
+  <div class="spinner" aria-hidden="true"></div>
+  <p>Running the pipeline<span class="dots"></span></p>
+  <p class="boot-sub">Detecting signals, scoring recommendations, simulating 10,000 outcomes each, then gating.</p>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

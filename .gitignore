@@ -10,6 +10,11 @@ warehouse/
 .ipynb_checkpoints/
 .pytest_cache/
 
+# Screenshot and crop scratch space. The console images the README uses are
+# committed under docs/.
+_shots/
+_tmp*.py
+
 # Task source material. The brief is marked confidential, so it stays out of the repo.
 Data Engineer Task.zip
 Data Engineer Task Brief.pdf

@@ -169,8 +169,29 @@ class TestReversibilityGoverns:
         decision = evaluate(
             recommendation, make_simulation(samples), make_simulation(samples), SCALE
         )
-        assert any(c.name == "action_is_reversible" and not c.passed for c in decision.checks)
+        check = next(c for c in decision.checks if c.name == "action_is_reversible")
+        assert not check.passed
+        # Flagged as routing rather than special-cased by name, so anything
+        # presenting these checks can tell "this is a purchase order" apart from
+        # "this costs more than we tolerate" without knowing the check names.
+        assert check.routing
         assert not decision.requires_scrutiny
+
+    def test_only_the_reversibility_check_routes(self):
+        """Routing is a narrow exemption. If a second check ever claimed it, a
+        real objection would stop counting toward scrutiny without anyone
+        noticing."""
+        recommendation = make_recommendation(
+            action_type=ActionType.INVENTORY_PURCHASE,
+            reversibility=Reversibility.IRREVERSIBLE,
+            confidence=1.0,
+            parameters={"total_reorder_cost": 1_000.0},
+        )
+        samples = np.full(1000, 5_000.0)
+        decision = evaluate(
+            recommendation, make_simulation(samples), make_simulation(samples), SCALE
+        )
+        assert [c.name for c in decision.checks if c.routing] == ["action_is_reversible"]
 
 
 class TestStressGovernsAutonomy:

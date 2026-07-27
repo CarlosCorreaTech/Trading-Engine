@@ -8,7 +8,9 @@ without asking anyone.
 
 **Start with [`notebooks/walkthrough.ipynb`](notebooks/walkthrough.ipynb).** It is
 the narrative version of everything below, with the charts, and it renders on
-GitHub without needing to run anything.
+GitHub without needing to run anything. If you would rather click than read,
+`docker compose up console` puts [the same decisions](#the-console) in a
+browser on port 8000.
 
 ---
 
@@ -169,14 +171,79 @@ systematically underrated.
 
 ---
 
+## The console
+
+The notebook is the argument; the console is what using this would feel like.
+It runs the same pipeline and shows the same numbers, arranged as a queue of
+decisions rather than a narrative.
+
+![The decision console](docs/console.png)
+
+The left column is the queue, grouped by what the engine is asking of you, in
+descending order of how much attention it wants: what it is doing by itself,
+what needs your signature, what needs your judgement, and what it decided to
+leave alone. Anything the engine wants argued about rather than merely signed
+is marked `scrutiny`, so three purchase orders arriving together do not all
+look equally routine.
+
+Selecting one opens the whole case: the money committed, how much of it is at
+risk once the assumptions are set against it, the reasoning, the four
+confidence factors, every gate check with the arithmetic behind it, and the
+distribution of simulated outcomes.
+
+That last one is the part worth looking at. Each recommendation is simulated
+twice, once as modelled and once with its key assumptions turned against it,
+and both are drawn on a shared axis:
+
+<img src="docs/simulation.png" alt="Simulated outcomes, as modelled and under stress" width="620">
+
+Grey is the model's own view, amber is the stressed one, and the gap between
+them is the argument for not letting the engine spend this money by itself.
+Grey has two humps because the model gives the Vitamin D3 surge a real chance
+of being promotional rather than durable, and in that branch the stock takes
+far longer to sell. Stressing the assumptions applies that haircut to every
+draw, which is why amber sits almost entirely below grey's main mode: a median
+of £2,509 against £5,527. A single expected value would have hidden both facts.
+
+The other two tabs show the raw material: every detected signal with its
+classification, and every data quality check with the score it contributes.
+
+Views are addressable, so `#decisions/restock_vitamin_d3_drops` links to one
+specific decision rather than to "the third one down".
+
+---
+
 ## Running it
+
+### With Docker
+
+```bash
+docker compose up console      # http://localhost:8000
+```
+
+That builds the image, builds the warehouse inside it, and serves the console.
+The image build takes a few minutes, nearly all of it installing scipy and
+pandas. Starting the container afterwards takes about a second: the warehouse
+is already built, and the container runs the detectors, the recommendation
+rules and all 80,000 simulation draws during startup so that the first request
+is served from a finished result rather than waiting on one.
+
+The image also carries the notebook and the tests:
+
+```bash
+docker compose --profile notebook up    # http://localhost:8888, no token
+docker compose run --rm tests           # the 94 tests, against the baked warehouse
+```
+
+### Without Docker
 
 Verified on Python 3.14.6, Windows. Requires 3.12 or later.
 
 ```bash
 pip install -r requirements.txt
 python -m src.build          # builds warehouse.duckdb from the CSVs, ~3 seconds
-pytest                       # 93 tests
+pytest                       # 94 tests
+uvicorn app.api:app          # the console on http://localhost:8000
 jupyter lab notebooks/walkthrough.ipynb
 ```
 
@@ -212,6 +279,11 @@ Eight stages, each answering a narrower question than the one before it.
 | **Recommendation** | What should we do about it, and how sure are we? | `src/recommendations/` |
 | **Simulation** | What happens if we do? | `src/simulation/` |
 | **Autonomy** | Should a machine do it unsupervised? | `src/autonomy/` |
+
+The console in `app/` is not a ninth stage; it runs the eight above and renders
+the result. It is a FastAPI process serving JSON plus
+static HTML, CSS and JavaScript, with no Node toolchain, no bundler and nothing
+loaded from a CDN, so the container needs no network access to work.
 
 Modelling is in SQL and runs in DuckDB against the CSVs directly; statistics,
 simulation and decision logic are in Python. Every threshold and business
