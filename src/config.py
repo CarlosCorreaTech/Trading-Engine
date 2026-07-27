@@ -32,19 +32,13 @@ ANALYSIS_END = "2025-06-30"
 
 CURRENCY = "GBP"
 
-# Last-click channel mapping from orders.referring_site.
+# The referrer-domain to channel mapping lives in sql/core/02_dim_channel.sql,
+# which is its single source of truth. Duplicating it here would let the two
+# drift apart silently.
 #
-# Two gaps are deliberate and are surfaced rather than hidden:
-#   - TikTok drives traffic but has no spend file, so its CAC is uncomputable.
-#   - Direct and blank referrers are ~27% of orders and cannot be attributed.
-# Channel CAC is therefore reported as a range, not a point estimate.
-CHANNEL_MAPPING = {
-    "facebook.com": "Meta",
-    "instagram.com": "Meta",
-    "google.com": "Google",
-    "youtube.com": "Google",
-    "tiktok.com": "TikTok",
-}
+# Only these two channels have a spend file, so only they can have a CAC. TikTok
+# sends real traffic with no cost data, and ~27% of orders carry no usable
+# referrer, which is why channel CAC is reported as a range rather than a point.
 PAID_CHANNELS_WITH_SPEND = ("Meta", "Google")
 
 # Window used for LTV in the CAC:LTV comparison. Short enough that most of the
