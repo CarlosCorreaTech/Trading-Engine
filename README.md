@@ -205,8 +205,18 @@ far longer to sell. Stressing the assumptions applies that haircut to every
 draw, which is why amber sits almost entirely below grey's main mode: a median
 of £2,509 against £5,527. A single expected value would have hidden both facts.
 
-The other two tabs show the raw material: every detected signal with its
-classification, and every data quality check with the score it contributes.
+The other two tabs show the raw material. Every detected signal is listed with
+the classification that decides whether it is actionable at all, which is what
+routes a measurement fault to engineering rather than to marketing:
+
+![The signals tab](docs/signals.png)
+
+The bottom of that list is the point. The lone `artifact` row is the retention
+collapse, at a data quality of 0.00. Directly above it, the `data_quality` row
+is the Klaviyo tracking incident, and the four `explained` email flows below it
+are the ones folded into that single account-level incident instead of being
+raised four separate times. The data quality tab shows the checks behind those
+scores.
 
 Views are addressable, so `#decisions/restock_vitamin_d3_drops` links to one
 specific decision rather than to "the third one down".
