@@ -48,7 +48,8 @@ orders_daily AS (
         COUNT(*) FILTER (WHERE is_first_order)      AS new_customers,
         SUM(net_revenue)                            AS net_revenue,
         SUM(gross_profit)                           AS gross_profit,
-        SUM(net_revenue) FILTER (WHERE is_first_order) AS new_customer_revenue
+        SUM(net_revenue) FILTER (WHERE is_first_order)  AS new_customer_revenue,
+        SUM(gross_profit) FILTER (WHERE is_first_order) AS new_customer_gross_profit
     FROM core.fct_orders
     WHERE is_valid_order
     GROUP BY 1, 2
@@ -82,6 +83,7 @@ combined AS (
         COALESCE(o.net_revenue, 0)                  AS net_revenue,
         COALESCE(o.gross_profit, 0)                 AS gross_profit,
         COALESCE(o.new_customer_revenue, 0)         AS new_customer_revenue,
+        COALESCE(o.new_customer_gross_profit, 0)    AS new_customer_gross_profit,
         u.unattributed_new_customers,
         a.attributed_new_customers
     FROM spend_daily s
@@ -116,6 +118,7 @@ metrics AS (
         net_revenue,
         gross_profit,
         new_customer_revenue,
+        new_customer_gross_profit,
         allocated_unattributed,
         new_customers + allocated_unattributed      AS new_customers_upper,
 
@@ -148,7 +151,16 @@ SELECT
     CASE WHEN SUM(new_customers_upper) OVER w7 > 0
          THEN SUM(spend) OVER w7 / SUM(new_customers_upper) OVER w7 END AS cac_with_unattributed_7d,
     CASE WHEN SUM(spend) OVER w7 > 0
-         THEN SUM(net_revenue) OVER w7 / SUM(spend) OVER w7 END         AS roas_site_7d
+         THEN SUM(net_revenue) OVER w7 / SUM(spend) OVER w7 END         AS roas_site_7d,
+
+    -- Rolling first-order payback: gross profit earned on the customers won in
+    -- the last 7 days, against what it cost to win them. Below 1.0 means the
+    -- channel is not covering its own acquisition cost from the first purchase.
+    -- Computed on a 7-day window because daily new-customer counts are small
+    -- enough that a single day's ratio is meaningless.
+    CASE WHEN SUM(spend) OVER w7 > 0 AND SUM(new_customers) OVER w7 > 0
+         THEN SUM(new_customer_gross_profit) OVER w7 / SUM(spend) OVER w7
+    END                                                                 AS payback_ratio_7d
 FROM metrics
 WINDOW
     w7  AS (PARTITION BY channel ORDER BY date_day RANGE BETWEEN INTERVAL 6 DAY PRECEDING AND CURRENT ROW),
