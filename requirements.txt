@@ -14,5 +14,6 @@ jupyter==1.1.1
 fastapi==0.140.7
 uvicorn[standard]==0.51.0
 
-# Detector test suite
+# Test suite. httpx is what FastAPI's TestClient drives requests through.
 pytest==9.1.1
+httpx==0.28.1

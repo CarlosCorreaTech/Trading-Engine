@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+
+      # --only-binary mirrors the Dockerfile: if a pinned version has no wheel
+      # for this platform, fail here rather than silently compiling from source.
+      - name: Install dependencies
+        run: pip install --only-binary=:all: -r requirements.txt
+
+      # Building the warehouse is itself a test: it runs every staging, core,
+      # semantic and data quality model against the CSVs and fails loudly if
+      # any error-severity quality check does not pass.
+      - name: Build the warehouse
+        run: python -m src.build --quiet
+
+      # Unit tests plus the integration suites, which run the detectors, the
+      # rules and the console API against the warehouse built above.
+      - name: Run the tests
+        run: pytest -q
