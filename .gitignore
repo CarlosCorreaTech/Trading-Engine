@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+# Rebuildable from `python -m src.build`
+*.duckdb
+*.duckdb.wal
+warehouse/
+
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Task source material. The brief is marked confidential, so it stays out of the repo.
+Data Engineer Task.zip
+Data Engineer Task Brief.pdf
