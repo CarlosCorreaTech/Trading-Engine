@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from src.config import RECOMMENDATION_RULES, SIMULATION
+from src.config import AUTONOMY_GATE, RECOMMENDATION_RULES, SIMULATION
 from src.recommendations.recommendation import ActionType, Recommendation
 from src.simulation.monte_carlo import (
     bootstrap_mean,
@@ -45,9 +45,11 @@ INVENTORY_HOLDING_COST_ANNUAL = 0.25
 # it has no basis for, and to make the downside visible to the autonomy gate.
 DEMAND_REVERSION_PROBABILITY = 0.15
 
+STRESS = AUTONOMY_GATE["stress"]
+
 
 def simulate_budget_reallocation(
-    recommendation: Recommendation, con, rng: np.random.Generator
+    recommendation: Recommendation, con, rng: np.random.Generator, stress: bool = False
 ) -> SimulationResult:
     """Incremental gross profit from moving spend between two channels.
 
@@ -60,6 +62,10 @@ def simulate_budget_reallocation(
     least efficient spend, so the true marginal cost is higher and fewer
     customers are lost than modelled. The simulation therefore understates the
     benefit, which is the right direction to be wrong in.
+
+    Under `stress` the two assumptions the recommendation lists as caveats are
+    set against it simultaneously: Google wins no extra customers for the extra
+    money, and every unattributed order turns out to have been Meta's.
     """
     params = recommendation.parameters
     n = SIMULATION["n_draws"]
@@ -95,17 +101,23 @@ def simulate_budget_reallocation(
     # cancels in a comparison, which is why the recommendation is robust to it.
     attribution_weight = rng.uniform(0.0, 1.0, size=n)
 
-    def blended_cac(frame) -> np.ndarray:
+    # Under stress, attribution is resolved in the direction that hurts: the
+    # source channel gets the optimistic bound (its cheapest defensible
+    # acquisition cost) and the destination gets the pessimistic one.
+    source_weight = 0.0 if stress else attribution_weight
+    destination_weight = 1.0 if stress else attribution_weight
+
+    def blended_cac(frame, weight) -> np.ndarray:
         pessimistic = bootstrap_mean(
             frame["cac_attributed_7d"].to_numpy(dtype=float), n, BUDGET_HORIZON_DAYS, rng
         )
         optimistic = bootstrap_mean(
             frame["cac_with_unattributed_7d"].to_numpy(dtype=float), n, BUDGET_HORIZON_DAYS, rng
         )
-        return attribution_weight * pessimistic + (1 - attribution_weight) * optimistic
+        return weight * pessimistic + (1 - weight) * optimistic
 
-    source_cac = blended_cac(source)
-    destination_cac = blended_cac(destination)
+    source_cac = blended_cac(source, source_weight)
+    destination_cac = blended_cac(destination, destination_weight)
     source_contribution = bootstrap_mean(
         contribution_series(source), n, BUDGET_HORIZON_DAYS, rng
     )
@@ -113,7 +125,14 @@ def simulate_budget_reallocation(
         contribution_series(destination), n, BUDGET_HORIZON_DAYS, rng
     )
 
+    # Drawn even when the value is about to be overridden, so that the stressed
+    # run consumes the generator in exactly the same order as the nominal one.
+    # The two then differ only by the assumption under test, not by sampling
+    # noise, which is what makes the comparison between them meaningful.
     elasticity = draw_spend_elasticity(n, rng)
+    if stress:
+        elasticity = np.full(n, float(STRESS["budget_elasticity"]))
+
     spend_uplift = params["monthly_shift_gbp"] / params["destination_monthly_spend"]
     destination_cac_effective = destination_cac * (1 + spend_uplift) ** elasticity
 
@@ -143,6 +162,7 @@ def simulate_budget_reallocation(
         horizon_days=BUDGET_HORIZON_DAYS,
         random_seed=SIMULATION["random_seed"],
         assumptions={
+            "scenario": "stressed" if stress else "nominal",
             "breakeven_elasticity": round(breakeven_elasticity, 2),
             "breakeven_interpretation": (
                 f"The move only loses money if the destination channel's elasticity exceeds "
@@ -179,7 +199,7 @@ def simulate_budget_reallocation(
 
 
 def simulate_inventory_purchase(
-    recommendation: Recommendation, con, rng: np.random.Generator
+    recommendation: Recommendation, con, rng: np.random.Generator, stress: bool = False
 ) -> SimulationResult:
     """Incremental gross profit from ordering now versus ordering late.
 
@@ -203,6 +223,11 @@ def simulate_inventory_purchase(
     product produces a wider outcome distribution than a steady one without
     that having to be specified anywhere. Lost demand is treated as gone rather
     than deferred: someone who cannot buy a supplement today buys it elsewhere.
+
+    Under `stress` the order is judged against the world it was not sized for:
+    the surge behind it unwinds with certainty rather than with 15% probability,
+    products with no surge still sell a quarter below recent history, and the
+    supplier delivers 30% late.
     """
     params = recommendation.parameters
     rules = RECOMMENDATION_RULES["inventory_reorder"]
@@ -224,15 +249,37 @@ def simulate_inventory_purchase(
     )
 
     lead_time = draw_lead_time(rules["assumed_supplier_lead_time_days"], n, rng)
+    if stress:
+        lead_time = lead_time * float(STRESS["inventory_lead_time_multiplier"])
     total_incremental = np.zeros(n)
+
+    # Cash still sitting in unsold stock at the end of the horizon, tracked
+    # separately from profit on purpose.
+    #
+    # The profit model charges leftover stock a carrying cost, which for a
+    # 180-day horizon is about 12% of its value. That is the right number for
+    # "was this order profitable" and the wrong one for "can we afford to be
+    # wrong", because the exposure on an irreversible purchase is the capital
+    # itself, not the interest on it. The autonomy gate needs the capital.
+    total_unsold_capital = np.zeros(n)
 
     # One reversion draw for the whole product, not one per variant: if the
     # trend behind Vitamin D3 unwinds, it unwinds for both the 1000IU and the
     # 4000IU pack. Drawing separately would let one variant collapse while its
     # sibling thrived, diversifying away a risk that is not diversifiable.
+    #
+    # As in the budget model, the draw happens even when stress is about to
+    # replace it, so both runs consume the generator identically.
     reversion_ratio = float(params.get("demand_reversion_ratio", 1.0))
     reverts = rng.random(n) < DEMAND_REVERSION_PROBABILITY
     demand_scale = np.where(reverts & (reversion_ratio < 1.0), reversion_ratio, 1.0)
+    if stress:
+        # A product sized against a surge is stressed by that surge unwinding.
+        # A product with no surge has nothing to unwind, so it gets the generic
+        # haircut instead: recent history is not guaranteed to repeat either.
+        demand_scale = np.full(
+            n, min(reversion_ratio, float(STRESS["inventory_demand_haircut"]))
+        )
 
     for line in params["lines"]:
         sku_history = history[history["sku"] == line["sku"]]["units"].to_numpy(dtype=float)
@@ -281,6 +328,7 @@ def simulate_inventory_purchase(
         oversupply_cost = leftover * unit_cost * INVENTORY_HOLDING_COST_ANNUAL * (horizon / 365.0)
 
         total_incremental += rescued_units * margin - holding_cost - oversupply_cost
+        total_unsold_capital += leftover * unit_cost
 
     return summarise(
         samples=total_incremental,
@@ -289,6 +337,7 @@ def simulate_inventory_purchase(
         horizon_days=horizon,
         random_seed=SIMULATION["random_seed"],
         assumptions={
+            "scenario": "stressed" if stress else "nominal",
             "assumed_lead_time_days": rules["assumed_supplier_lead_time_days"],
             "lead_time_distribution": "Lognormal, skewed late, since deliveries miss late "
                                       "more often than early",
@@ -301,9 +350,18 @@ def simulate_inventory_purchase(
                               "Comparing against never reordering would credit the order "
                               "with sales it would have made anyway",
             "demand_reversion_probability": (
-                DEMAND_REVERSION_PROBABILITY if reversion_ratio < 1.0 else 0.0
+                float(STRESS["inventory_reversion_probability"])
+                if stress
+                else (DEMAND_REVERSION_PROBABILITY if reversion_ratio < 1.0 else 0.0)
             ),
             "demand_reversion_ratio": reversion_ratio,
+            "demand_scale_applied": round(float(np.median(demand_scale)), 4),
+            "capital_unsold_at_horizon_p50": round(
+                float(np.percentile(total_unsold_capital, 50)), 2
+            ),
+            "capital_unsold_at_horizon_p95": round(
+                float(np.percentile(total_unsold_capital, 95)), 2
+            ),
             "reorder_cost": params["total_reorder_cost"],
         },
     )

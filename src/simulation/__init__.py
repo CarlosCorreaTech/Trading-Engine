@@ -20,13 +20,23 @@ __all__ = [
 ]
 
 
-def simulate(recommendation: Recommendation, con, seed: int | None = None) -> SimulationResult | None:
+def simulate(
+    recommendation: Recommendation,
+    con,
+    seed: int | None = None,
+    stress: bool = False,
+) -> SimulationResult | None:
     """Simulate one recommendation, or return None if it has no cash outcome.
 
     Each recommendation gets its own generator, seeded from the global seed
     plus a hash of its id. That keeps every result reproducible while making
     them independent of one another, so adding or removing a recommendation
     does not silently change the numbers for all the others.
+
+    `stress` re-runs the same model with its most fragile assumptions set
+    against the recommendation. The seed is deliberately unchanged, so the
+    stressed and nominal runs share their random draws and any difference
+    between them is attributable to the assumption rather than to noise.
     """
     simulator = SIMULATORS.get(recommendation.action_type)
     if simulator is None:
@@ -35,15 +45,15 @@ def simulate(recommendation: Recommendation, con, seed: int | None = None) -> Si
     base_seed = SIMULATION["random_seed"] if seed is None else seed
     offset = int.from_bytes(recommendation.recommendation_id.encode()[:4].ljust(4, b"\0"), "little")
     rng = np.random.default_rng(base_seed + offset % 100_000)
-    return simulator(recommendation, con, rng)
+    return simulator(recommendation, con, rng, stress=stress)
 
 
 def simulate_all(
-    recommendations: list[Recommendation], con, seed: int | None = None
+    recommendations: list[Recommendation], con, seed: int | None = None, stress: bool = False
 ) -> dict[str, SimulationResult]:
     results: dict[str, SimulationResult] = {}
     for recommendation in recommendations:
-        result = simulate(recommendation, con, seed)
+        result = simulate(recommendation, con, seed, stress=stress)
         if result is not None:
             results[recommendation.recommendation_id] = result
     return results

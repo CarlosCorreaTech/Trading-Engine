@@ -177,10 +177,25 @@ SIMULATION = {
 
 
 # --- Autonomy gate ------------------------------------------------------
-# Reversible actions (shifting ad budget) can be undone within a day and their
-# downside is bounded by the amount moved. Irreversible actions (buying stock)
-# commit cash, incur holding costs, and cannot be unwound, so they face a much
-# higher bar and always route to a human regardless of confidence.
+# What the engine may do on its own, and what it must hand to a person.
+#
+# The organising principle is that the cost of being wrong is not symmetric
+# across decisions, so the evidence bar should not be either. Shifting ad budget
+# can be undone within a day and the damage stops the moment you notice.
+# Committing cash to stock cannot be undone at all: the money is gone, the goods
+# occupy space, they age toward expiry, and the only exit is discounting. Two
+# actions with identical expected value therefore deserve different treatment.
+#
+# The gate asks two separate questions, and both must be satisfied.
+#   Is it likely to be right?   confidence, probability of a positive return,
+#                               and a loss-adjusted value that penalises the
+#                               downside rather than averaging it away.
+#   Is being wrong survivable?  the loss under a deliberately adverse setting of
+#                               the model's own assumptions, against what the
+#                               business could absorb.
+#
+# The second question is the one that actually matters, and it is the one a
+# probability alone cannot answer.
 AUTONOMY_GATE = {
     "reversible": {
         "min_confidence": 0.70,
@@ -190,6 +205,57 @@ AUTONOMY_GATE = {
     "irreversible": {
         "min_confidence": 0.85,
         "min_prob_positive_roi": 0.80,
+        # Never, at any confidence. See the note on asymmetry above: an
+        # irreversible action has no recovery path, so the usual argument for
+        # autonomy (act fast, correct fast) does not apply to it.
         "auto_execute_allowed": False,
+    },
+    # How many times worse a pound lost is than a pound gained. Applied to the
+    # simulated loss tail to produce a loss-adjusted value, so an action whose
+    # upside merely outweighs its downside on average is not automatically
+    # approved. The reversible figure is above 1.0 because even a recoverable
+    # mistake costs attention and credibility; the irreversible figure is much
+    # higher because the loss persists and compounds.
+    "regret_multiplier": {
+        "reversible": 2.0,
+        "irreversible": 5.0,
+    },
+    # The largest single step the engine may take unsupervised, as a share of
+    # monthly paid media spend. Anything larger is split into tranches, each of
+    # which must clear the gate again on observed results.
+    #
+    # Expressed as a share rather than an amount so it scales with the business
+    # instead of going stale. 5% is a step whose entire effect is inside normal
+    # weekly variation, which is the property that makes it safe to take without
+    # asking: if it is wrong, nothing visible breaks before the next review.
+    "max_autonomous_step_pct_of_paid_spend": 0.05,
+    # The stressed loss an unsupervised action may carry, as a share of one
+    # month's gross profit. Not a probability: this is the affordability test,
+    # asking whether the bad case is survivable rather than unlikely.
+    "max_stressed_loss_pct_of_monthly_gross_profit": 0.05,
+    # How the gate stresses the simulation's own assumptions.
+    #
+    # Each of these attacks a specific assumption that the recommendation
+    # already declares as a caveat, which is the point: a caveat that never
+    # changes a decision is decoration. Re-running the simulation under the
+    # adverse setting turns each one into a number.
+    "stress": {
+        # Google absorbs the extra budget at the worst response that is
+        # physically possible: an elasticity of 1.0 means the additional spend
+        # wins no additional customers at all.
+        "budget_elasticity": 1.0,
+        # And the unattributed orders all belong to Meta, so the source channel
+        # is charged its cheapest plausible acquisition cost while the
+        # destination is charged its dearest. This is the "last-click underrates
+        # upper-funnel" caveat, priced.
+        "budget_attribution_favours_source": True,
+        # The surge that sized the order unwinds with certainty rather than with
+        # 15% probability.
+        "inventory_reversion_probability": 1.0,
+        # And for products with no surge to unwind, demand still runs a quarter
+        # below recent history, since recent history may itself be flattered.
+        "inventory_demand_haircut": 0.75,
+        # Suppliers deliver 30% later than assumed.
+        "inventory_lead_time_multiplier": 1.30,
     },
 }
