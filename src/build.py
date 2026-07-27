@@ -67,7 +67,46 @@ def build(warehouse_path: Path = WAREHOUSE_PATH, verbose: bool = True) -> duckdb
 
     if verbose:
         _print_summary(con)
+    _assert_no_hard_failures(con, verbose=verbose)
     return con
+
+
+def _assert_no_hard_failures(con: duckdb.DuckDBPyConnection, verbose: bool = True) -> None:
+    """Fail the build on any error-severity DQ check.
+
+    Known issues are reported but do not block: they are inherent to the source
+    and are already priced into the metric quality scores. Error-severity checks
+    are different, because they assert guarantees the models depend on, and a
+    warehouse that violates one is producing wrong numbers rather than uncertain
+    ones.
+    """
+    failures = con.execute(
+        """
+        SELECT check_name, observed_value, threshold, description
+        FROM dq.check_results
+        WHERE NOT passed AND severity = 'error'
+        ORDER BY check_name
+        """
+    ).fetchall()
+
+    if verbose:
+        known = con.execute(
+            "SELECT count(*) FROM dq.check_results WHERE NOT passed AND is_known_issue"
+        ).fetchone()[0]
+        total = con.execute("SELECT count(*) FROM dq.check_results").fetchone()[0]
+        print(f"\n[data quality] {total - len(failures) - known} passed, "
+              f"{known} known issues, {len(failures)} hard failures")
+        for family, score, band in con.execute(
+            "SELECT metric_family, quality_score, quality_band FROM dq.metric_quality ORDER BY quality_score"
+        ).fetchall():
+            print(f"  {family:<22} {score:>5.2f}  {band}")
+
+    if failures:
+        lines = "\n".join(
+            f"  {name}: observed {observed} (threshold {threshold}) - {desc}"
+            for name, observed, threshold, desc in failures
+        )
+        raise RuntimeError(f"Build failed {len(failures)} error-severity data quality check(s):\n{lines}")
 
 
 def _print_summary(con: duckdb.DuckDBPyConnection) -> None:
