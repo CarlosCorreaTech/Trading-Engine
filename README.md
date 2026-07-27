@@ -86,9 +86,10 @@ what makes it safe to act on.
 Two of those reorders are routine. The Vitamin D3 one is not, and the difference
 is explained below.
 
-**Four email flows lost engagement on the same day.** They target different
-audiences at different points in the customer relationship and share nothing
-except the sending infrastructure. Orders per recipient did not move. That is an
+**Four email flows began losing engagement within three weeks of one another.**
+They target different audiences at different points in the customer
+relationship and share nothing except the sending infrastructure. Orders per
+recipient did not move. That is an
 account-level tracking fault, not four separate content problems, and it is
 routed to engineering as one incident rather than to marketing as four.
 
@@ -131,8 +132,8 @@ respond to more money, which is something this data cannot tell us.
 **The three reorders are not equally safe, and only the stress test shows it.**
 By confidence, by probability, and by expected profit, the Vitamin D3 order looks
 identical to the other two. But its quantity is sized against demand that rose
-175% since January. If that surge unwinds, 60% of the £6,263 is still sitting on
-a shelf six months later. The CBD Oil order commits three times as much cash and
+175% since January. If that surge unwinds, over 60% of the £6,263 is still
+sitting on a shelf six months later. The CBD Oil order commits three times as much cash and
 puts 15% of it at risk; the Muscle Balm order, 7%. The engine flags Vitamin D3
 as the one that deserves an argument rather than a signature.
 
@@ -203,7 +204,7 @@ Grey has two humps because the model gives the Vitamin D3 surge a real chance
 of being promotional rather than durable, and in that branch the stock takes
 far longer to sell. Stressing the assumptions applies that haircut to every
 draw, which is why amber sits almost entirely below grey's main mode: a median
-of £2,509 against £5,527. A single expected value would have hidden both facts.
+of £2,452 against £5,527. A single expected value would have hidden both facts.
 
 The other two tabs show the raw material. Every detected signal is listed with
 the classification that decides whether it is actionable at all, which is what
@@ -242,7 +243,7 @@ The image also carries the notebook and the tests:
 
 ```bash
 docker compose --profile notebook up    # http://localhost:8888, no token
-docker compose run --rm tests           # the 94 tests, against the baked warehouse
+docker compose run --rm tests           # the 134 tests, against the baked warehouse
 ```
 
 ### Without Docker
@@ -252,7 +253,7 @@ Verified on Python 3.14.6, Windows. Requires 3.12 or later.
 ```bash
 pip install -r requirements.txt
 python -m src.build          # builds warehouse.duckdb from the CSVs, ~3 seconds
-pytest                       # 94 tests
+pytest                       # 134 tests
 uvicorn app.api:app          # the console on http://localhost:8000
 jupyter lab notebooks/walkthrough.ipynb
 ```
