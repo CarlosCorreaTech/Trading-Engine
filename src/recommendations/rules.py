@@ -237,6 +237,19 @@ def rule_restock_critical_inventory(signals: list[Signal], con) -> list[Recommen
             )
 
         soonest = min(float(r.days_of_cover) for r in group.itertuples(index=False))
+
+        # If current demand is the product of a recent surge, the order is
+        # sized against a rate that has not been proven durable. The ratio of
+        # pre-surge to current velocity is how far demand would fall if the
+        # surge unwound, and the simulation uses it to price that risk. A
+        # product with no surge has nothing to revert to.
+        reversion_ratio = 1.0
+        if growth_signals:
+            biggest_growth = max(growth_signals, key=lambda s: s.magnitude)
+            baseline = float(biggest_growth.evidence.get("baseline_units_per_day", 0.0))
+            current = float(biggest_growth.evidence.get("current_units_per_day", 0.0))
+            if current > 0 and baseline > 0:
+                reversion_ratio = baseline / current
         checks = {
             "cover_is_shorter_than_supplier_lead_time": soonest < lead_time,
             "demand_is_stable_or_growing": bool(growth_signals) or soonest < lead_time,
@@ -294,6 +307,8 @@ def rule_restock_critical_inventory(signals: list[Signal], con) -> list[Recommen
                     "soonest_days_of_cover": round(soonest, 1),
                     "lead_time_days": lead_time,
                     "gross_profit_at_risk": round(total_margin_at_risk, 2),
+                    "demand_reversion_ratio": round(reversion_ratio, 4),
+                    "demand_recently_surged": reversion_ratio < 1.0,
                 },
                 caveats=[
                     f"The {lead_time}-day lead time is an assumption. The dataset contains no "
